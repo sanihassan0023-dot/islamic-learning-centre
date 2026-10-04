@@ -1,0 +1,2084 @@
+<!DOCTYPE html>
+<html lang="ha">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Al-Qur'ani Mai Girma — Hausa</title>
+
+<style>
+
+:root{
+--bg:#f3f6f7;
+--card:#fff;
+--text:#182025;
+--muted:#68757c;
+--green:#075e54;
+--green2:#0b806f;
+--border:#dce4e7;
+--translation:#f0f8f6;
+--marker:#e8f4f1;
+}
+
+*{
+box-sizing:border-box;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+margin:0;
+background:var(--bg);
+color:var(--text);
+font-family:Arial,Helvetica,sans-serif;
+line-height:1.7;
+transition:.2s;
+}
+
+body.dark{
+--bg:#101416;
+--card:#1a2225;
+--text:#edf3f4;
+--muted:#aeb9bd;
+--green:#19a38e;
+--green2:#22b49e;
+--border:#303b40;
+--translation:#142d29;
+--marker:#18352f;
+}
+
+
+/* HEADER */
+
+header{
+background:linear-gradient(
+135deg,
+var(--green),
+#063f39
+);
+
+color:white;
+text-align:center;
+padding:20px 12px;
+}
+
+header h1{
+margin:0;
+font-size:26px;
+}
+
+header p{
+margin:7px 0 0;
+font-size:14px;
+}
+
+
+/* TOOLBAR */
+
+.toolbar{
+position:sticky;
+top:0;
+z-index:50;
+
+background:var(--card);
+
+box-shadow:
+0 2px 10px rgba(0,0,0,.15);
+
+padding:10px;
+}
+
+.controls{
+max-width:1100px;
+margin:auto;
+
+display:flex;
+gap:7px;
+flex-wrap:wrap;
+
+align-items:center;
+justify-content:center;
+}
+
+select,
+input,
+button{
+min-height:40px;
+
+padding:9px 11px;
+
+border:1px solid var(--border);
+
+border-radius:7px;
+
+background:var(--card);
+
+color:var(--text);
+
+font-size:14px;
+}
+
+button{
+background:var(--green);
+color:white;
+border:0;
+cursor:pointer;
+font-weight:bold;
+}
+
+button:hover{
+background:var(--green2);
+}
+
+button:disabled{
+opacity:.45;
+cursor:not-allowed;
+}
+
+.search{
+display:flex;
+gap:6px;
+
+flex:1;
+
+min-width:230px;
+max-width:390px;
+}
+
+.search input{
+flex:1;
+min-width:0;
+}
+
+.fontbox{
+display:flex;
+align-items:center;
+gap:5px;
+}
+
+.fontbox button{
+width:42px;
+padding:7px;
+}
+
+
+/* CONTAINER */
+
+.container{
+max-width:950px;
+margin:auto;
+padding:15px;
+}
+
+.status{
+display:flex;
+justify-content:space-between;
+gap:8px;
+flex-wrap:wrap;
+
+color:var(--muted);
+
+font-size:13px;
+
+margin:4px 0 12px;
+}
+
+
+/* PAGE INFO */
+
+.page-info{
+background:var(--card);
+
+border:1px solid var(--border);
+
+border-radius:10px;
+
+padding:10px;
+
+text-align:center;
+
+margin-bottom:12px;
+
+font-size:13px;
+
+color:var(--muted);
+}
+
+
+/* SURAH */
+
+.surah-title{
+background:var(--card);
+
+padding:18px;
+
+border-radius:12px;
+
+text-align:center;
+
+margin-bottom:14px;
+
+border:1px solid var(--border);
+}
+
+.surah-title h2{
+margin:0 0 6px;
+
+color:var(--green);
+}
+
+.arabic-name,
+.bismillah,
+.arabic{
+font-family:
+"Amiri",
+"Traditional Arabic",
+"Noto Naskh Arabic",
+serif;
+}
+
+.arabic-name{
+font-size:30px;
+direction:rtl;
+}
+
+.bismillah{
+direction:rtl;
+text-align:center;
+
+font-size:31px;
+
+margin:18px 0;
+}
+
+
+/* AYAH */
+
+.ayah{
+background:var(--card);
+
+padding:17px;
+
+margin-bottom:13px;
+
+border-radius:12px;
+
+border:1px solid var(--border);
+}
+
+.arabic{
+direction:rtl;
+
+text-align:right;
+
+font-size:var(--arabic-size,30px);
+
+line-height:2.05;
+
+margin-bottom:13px;
+}
+
+.ayah-number{
+display:inline-flex;
+
+width:34px;
+height:34px;
+
+border-radius:50%;
+
+background:var(--green);
+
+color:#fff;
+
+align-items:center;
+justify-content:center;
+
+font-family:Arial;
+
+font-size:13px;
+
+margin-left:8px;
+
+vertical-align:middle;
+}
+
+
+/* TRANSLATION */
+
+.translation{
+direction:ltr;
+
+text-align:left;
+
+font-size:var(--translation-size,18px);
+
+line-height:1.8;
+
+padding:12px;
+
+border-left:4px solid var(--green);
+
+background:var(--translation);
+
+border-radius:5px;
+}
+
+
+/* AUDIO */
+
+.audio-row{
+display:flex;
+
+gap:8px;
+
+align-items:center;
+
+flex-wrap:wrap;
+
+margin-top:10px;
+}
+
+.audio-row audio{
+width:min(100%,430px);
+
+height:38px;
+}
+
+.meta{
+font-size:12px;
+
+color:var(--muted);
+}
+
+
+/* MARKER */
+
+.marker{
+background:var(--marker);
+
+border:1px dashed var(--green);
+
+color:var(--green);
+
+border-radius:8px;
+
+text-align:center;
+
+padding:9px;
+
+margin:18px 0;
+
+font-weight:bold;
+}
+
+
+/* NAVIGATION */
+
+.navigation{
+display:flex;
+
+gap:9px;
+
+margin:20px 0;
+}
+
+.navigation button{
+flex:1;
+}
+
+
+/* LOADING */
+
+.loading{
+text-align:center;
+
+padding:60px 10px;
+
+color:var(--muted);
+}
+
+.spinner{
+font-size:35px;
+
+margin-bottom:10px;
+}
+
+
+/* ERROR */
+
+.error{
+background:#ffe8e8;
+
+color:#941b1b;
+
+padding:15px;
+
+border-radius:8px;
+}
+
+.dark .error{
+background:#351d20;
+
+color:#ffb9bd;
+}
+
+
+/* SEARCH RESULTS */
+
+.results{
+background:var(--card);
+
+border:1px solid var(--border);
+
+border-radius:10px;
+
+padding:12px;
+
+margin:10px auto;
+}
+
+.result{
+padding:12px;
+
+border-bottom:1px solid var(--border);
+
+cursor:pointer;
+}
+
+.result:last-child{
+border-bottom:0;
+}
+
+.result:hover{
+background:var(--translation);
+}
+
+
+/* BOOKMARK */
+
+.bookmark{
+background:#fff8d9;
+
+border:1px solid #e7d889;
+
+color:#665600;
+
+padding:10px;
+
+border-radius:8px;
+
+margin-bottom:12px;
+
+text-align:center;
+}
+
+.dark .bookmark{
+background:#302d1b;
+
+border-color:#6b6235;
+
+color:#f0df83;
+}
+
+
+/* FOOTER */
+
+footer{
+text-align:center;
+
+background:#063f39;
+
+color:#fff;
+
+padding:20px;
+
+margin-top:30px;
+
+font-size:12px;
+
+line-height:1.7;
+}
+
+
+/* MOBILE */
+
+@media(max-width:650px){
+
+header h1{
+font-size:21px;
+}
+
+select,
+input,
+button{
+width:100%;
+}
+
+.search{
+max-width:none;
+
+width:100%;
+}
+
+.fontbox{
+width:100%;
+}
+
+.fontbox button{
+width:45px;
+}
+
+.fontbox span{
+flex:1;
+
+text-align:center;
+}
+
+.arabic{
+font-size:var(--arabic-size,26px);
+}
+
+.translation{
+font-size:var(--translation-size,16px);
+}
+
+.navigation{
+flex-direction:column;
+}
+
+}
+
+
+/* SWIPE MESSAGE */
+
+.swipe-hint{
+text-align:center;
+
+font-size:12px;
+
+color:var(--muted);
+
+margin:5px 0 15px;
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+<h1>القرآن الكريم</h1>
+
+<p>
+Al-Qur'ani Mai Girma — Larabci da Fassarar Hausa
+</p>
+
+</header>
+
+
+<div class="toolbar">
+
+<div class="controls">
+
+
+<select id="surahSelect">
+
+<option value="">
+Surori 114...
+</option>
+
+</select>
+
+
+<select id="juzSelect">
+
+<option value="">
+Juz 1–30...
+</option>
+
+</select>
+
+
+<select id="pageSelect">
+
+<option value="">
+Page 1–604...
+</option>
+
+</select>
+
+
+<div class="search">
+
+<input
+id="searchInput"
+placeholder="Search: 2:255 ko kalmar Larabci"
+>
+
+<button id="searchBtn">
+Search
+</button>
+
+</div>
+
+
+<button id="bookmarkBtn">
+🔖 Bookmark
+</button>
+
+
+<button id="darkBtn">
+🌙 Dark
+</button>
+
+
+<div class="fontbox">
+
+<button id="fontMinus">
+A−
+</button>
+
+<span>
+Font
+</span>
+
+<button id="fontPlus">
+A+
+</button>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+<div class="container">
+
+
+<div id="status"
+class="status">
+</div>
+
+
+<div class="page-info">
+
+📖 <span id="pageLabel">
+Page 1 / 604
+</span>
+
+</div>
+
+
+<div class="swipe-hint">
+
+Swipe hagu ko dama domin canza page
+
+</div>
+
+
+<div id="bookmarkBox"></div>
+
+
+<div id="searchResults"></div>
+
+
+<main id="content">
+
+<div class="loading">
+
+<div class="spinner">
+📖
+</div>
+
+Ana ɗora Al-Qur'ani...
+
+</div>
+
+</main>
+
+
+<div class="navigation">
+
+<button id="prevBtn">
+← Page da ta gabata
+</button>
+
+<button id="nextBtn">
+Page ta gaba →
+</button>
+
+</div>
+
+
+</div>
+
+
+<footer>
+
+Fassarar Hausa:
+Abu Bakr Mahmud Gumi —
+QuranEnc Hausa Gummi.
+
+<br>
+
+Source:
+QuranEnc.com
+
+<br>
+
+Rubutun Larabci,
+Page/Juz/Hizb-Rubu' da audio:
+Al Quran Cloud / Islamic Network.
+
+</footer>
+
+
+<script>
+
+
+/* =========================
+   API
+========================= */
+
+const API =
+'https://api.alquran.cloud/v1';
+
+const QENC =
+'https://quranenc.com/api/v1';
+
+const TRANSLATION =
+'hausa_gummi';
+
+const AUDIO =
+'https://cdn.islamic.network/quran/audio/64/ar.alafasy/';
+
+
+/* =========================
+   JUZ PAGES
+========================= */
+
+const juzStartPages = [
+
+1,22,42,62,82,
+102,121,142,162,182,
+202,222,242,262,282,
+302,322,342,362,382,
+402,422,442,462,482,
+502,522,542,562,582
+
+];
+
+
+/* =========================
+   SURAH LIST
+========================= */
+
+const surahs = [
+
+['Al-Fātiḥah','الفاتحة',7],
+['Al-Baqarah','البقرة',286],
+['Āl-‘Imrān','آل عمران',200],
+['An-Nisā’','النساء',176],
+['Al-Mā’idah','المائدة',120],
+['Al-An‘ām','الأنعام',165],
+['Al-A‘rāf','الأعراف',206],
+['Al-Anfāl','الأنفال',75],
+['At-Tawbah','التوبة',129],
+['Yūnus','يونس',109],
+['Hūd','هود',123],
+['Yūsuf','يوسف',111],
+['Ar-Ra‘d','الرعد',43],
+['Ibrāhīm','إبراهيم',52],
+['Al-Ḥijr','الحجر',99],
+['An-Naḥl','النحل',128],
+['Al-Isrā’','الإسراء',111],
+['Al-Kahf','الكهف',110],
+['Maryam','مريم',98],
+['Ṭā-Hā','طه',135],
+['Al-Anbiyā’','الأنبياء',112],
+['Al-Ḥajj','الحج',78],
+['Al-Mu’minūn','المؤمنون',118],
+['An-Nūr','النور',64],
+['Al-Furqān','الفرقان',77],
+['Ash-Shu‘arā’','الشعراء',227],
+['An-Naml','النمل',93],
+['Al-Qaṣaṣ','القصص',88],
+['Al-‘Ankabūt','العنكبوت',69],
+['Ar-Rūm','الروم',60],
+['Luqmān','لقمان',34],
+['As-Sajdah','السجدة',30],
+['Al-Aḥzāb','الأحزاب',73],
+['Saba’','سبأ',54],
+['Fāṭir','فاطر',45],
+['Yā-Sīn','يس',83],
+['Aṣ-Ṣāffāt','الصافات',182],
+['Ṣād','ص',88],
+['Az-Zumar','الزمر',75],
+['Ghāfir','غافر',85],
+['Fuṣṣilat','فصلت',54],
+['Ash-Shūrā','الشورى',53],
+['Az-Zukhruf','الزخرف',89],
+['Ad-Dukhān','الدخان',59],
+['Al-Jāthiyah','الجاثية',37],
+['Al-Aḥqāf','الأحقاف',35],
+['Muḥammad','محمد',38],
+['Al-Fatḥ','الفتح',29],
+['Al-Ḥujurāt','الحجرات',18],
+['Qāf','ق',45],
+['Adh-Dhāriyāt','الذاريات',60],
+['Aṭ-Ṭūr','الطور',49],
+['An-Najm','النجم',62],
+['Al-Qamar','القمر',55],
+['Ar-Raḥmān','الرحمن',78],
+['Al-Wāqi‘ah','الواقعة',96],
+['Al-Ḥadīd','الحديد',29],
+['Al-Mujādilah','المجادلة',22],
+['Al-Ḥashr','الحشر',24],
+['Al-Mumtaḥanah','الممتحنة',13],
+['Aṣ-Ṣaff','الصف',14],
+['Al-Jumu‘ah','الجمعة',11],
+['Al-Munāfiqūn','المنافقون',11],
+['At-Taghābun','التغابun',18],
+['Aṭ-Ṭalāq','الطلاق',12],
+['At-Taḥrīm','التحريم',12],
+['Al-Mulk','الملك',30],
+['Al-Qalam','القلم',52],
+['Al-Ḥāqqah','الحاقة',52],
+['Al-Ma‘ārij','المعارج',44],
+['Nūḥ','نوح',28],
+['Al-Jinn','الجن',28],
+['Al-Muzzammil','المزمل',20],
+['Al-Muddaththir','المدثر',56],
+['Al-Qiyāmah','القيامة',40],
+['Al-Insān','الإنسان',31],
+['Al-Mursalāt','المرسلات',50],
+['An-Naba’','النبأ',40],
+['An-Nāzi‘āt','النازعات',46],
+['‘Abasa','عبس',42],
+['At-Takwīr','التكوير',29],
+['Al-Infiṭār','الانفطار',19],
+['Al-Muṭaffifīn','المطففين',36],
+['Al-Inshiqāq','الانشقاق',25],
+['Al-Burūj','البروج',22],
+['Aṭ-Ṭāriq','الطارق',17],
+['Al-A‘lā','الأعلى',19],
+['Al-Ghāshiyah','الغاشية',26],
+['Al-Fajr','الفجر',30],
+['Al-Balad','البلد',20],
+['Ash-Shams','الشمس',15],
+['Al-Layl','الليل',21],
+['Aḍ-Ḍuḥā','الضحى',11],
+['Ash-Sharḥ','الشرح',8],
+['At-Tīn','التين',8],
+['Al-‘Alaq','العلق',19],
+['Al-Qadr','القدر',5],
+['Al-Bayyinah','البينة',8],
+['Az-Zalzalah','الزلزلة',8],
+['Al-‘Ādiyāt','العاديات',11],
+['Al-Qāri‘ah','القارعة',11],
+['At-Takāthur','التكاثر',8],
+['Al-‘Aṣr','العصر',3],
+['Al-Humazah','الهمزة',9],
+['Al-Fīl','الفيل',5],
+['Quraysh','قريش',4],
+['Al-Mā‘ūn','الماعون',7],
+['Al-Kawthar','الكوثر',3],
+['Al-Kāfirūn','الكافرون',6],
+['An-Naṣr','النصر',3],
+['Al-Masad','المسد',5],
+['Al-Ikhlāṣ','الإخلاص',4],
+['Al-Falaq','الفلق',5],
+['An-Nās','الناس',6]
+
+];
+
+
+/* =========================
+   VARIABLES
+========================= */
+
+let page = 1;
+
+let arabicSize =
+Number(localStorage.getItem('qArabic')) || 30;
+
+let transSize =
+Number(localStorage.getItem('qTrans')) || 18;
+
+const cache = new Map();
+
+
+/* =========================
+   SHORTCUT
+========================= */
+
+const $ =
+id => document.getElementById(id);
+
+
+/* =========================
+   ESCAPE HTML
+========================= */
+
+function esc(s){
+
+return String(s ?? '')
+.replace(/[&<>"']/g,c=>({
+
+'&':'&amp;',
+'<':'&lt;',
+'>':'&gt;',
+'"':'&quot;',
+"'":'&#039;'
+
+}[c]));
+
+}
+
+
+/* =========================
+   FONT SIZE
+========================= */
+
+function sizes(){
+
+document.documentElement.style
+.setProperty(
+'--arabic-size',
+arabicSize+'px'
+);
+
+document.documentElement.style
+.setProperty(
+'--translation-size',
+transSize+'px'
+);
+
+localStorage.setItem(
+'qArabic',
+arabicSize
+);
+
+localStorage.setItem(
+'qTrans',
+transSize
+);
+
+}
+
+
+/* =========================
+   MENUS
+========================= */
+
+function menus(){
+
+surahs.forEach((s,i)=>{
+
+let o =
+new Option(
+`${i+1}. ${s[0]} — ${s[1]}`,
+i+1
+);
+
+$('surahSelect').add(o);
+
+});
+
+
+for(let i=1;i<=30;i++){
+
+$('juzSelect').add(
+new Option(
+`Juz ${i}`,
+i
+)
+);
+
+}
+
+
+for(let i=1;i<=604;i++){
+
+$('pageSelect').add(
+new Option(
+`Page ${i}`,
+i
+)
+);
+
+}
+
+}
+
+
+/* =========================
+   GET JSON
+========================= */
+
+async function getJSON(url){
+
+let r =
+await fetch(url);
+
+if(!r.ok)
+throw Error(
+'HTTP '+r.status
+);
+
+return r.json();
+
+}
+
+
+/* =========================
+   HAUSA TRANSLATION
+========================= */
+
+async function hausa(n){
+
+if(cache.has(n))
+return cache.get(n);
+
+let d =
+await getJSON(
+`${QENC}/translation/sura/${TRANSLATION}/${n}`
+);
+
+let a =
+Array.isArray(d)
+? d
+: (d.result || d.data || []);
+
+let m = new Map();
+
+a.forEach(x=>{
+
+m.set(
++x.aya,
+x.translation || ''
+);
+
+});
+
+cache.set(n,m);
+
+return m;
+
+}
+
+
+/* =========================
+   HIZB / RUBU'
+========================= */
+
+function hr(q){
+
+q=+q;
+
+if(!q)
+return '';
+
+let h =
+Math.ceil(q/4);
+
+let r =
+((q-1)%4)+1;
+
+return `Hizb ${h} — Rubu' ${r}`;
+
+}
+
+
+/* =========================
+   AUDIO
+========================= */
+
+function audio(n){
+
+return AUDIO+n+'.mp3';
+
+}
+
+
+/* =========================
+   LOAD PAGE
+========================= */
+
+async function loadPage(p,scroll=true){
+
+page =
+Math.max(
+1,
+Math.min(
+604,
++p || 1
+)
+);
+
+
+$('pageSelect').value =
+page;
+
+$('surahSelect').value =
+'';
+
+$('juzSelect').value =
+'';
+
+$('searchResults').innerHTML =
+'';
+
+
+$('prevBtn').disabled =
+page===1;
+
+$('nextBtn').disabled =
+page===604;
+
+
+$('pageLabel').textContent =
+`Page ${page} / 604`;
+
+
+$('content').innerHTML = `
+
+<div class="loading">
+
+<div class="spinner">
+📖
+</div>
+
+Ana ɗora Page ${page}...
+
+</div>
+
+`;
+
+
+try{
+
+let d =
+await getJSON(
+`${API}/page/${page}/quran-uthmani`
+);
+
+let a =
+d.data?.ayahs || [];
+
+await render(a);
+
+if(scroll){
+
+window.scrollTo({
+top:0,
+behavior:'smooth'
+});
+
+}
+
+}catch(e){
+
+$('content').innerHTML = `
+
+<div class="error">
+
+<b>An samu matsala.</b>
+
+<p>
+Ka tabbatar kana da internet sannan
+ka sake gwadawa.
+</p>
+
+<small>
+${esc(e.message)}
+</small>
+
+</div>
+
+`;
+
+}
+
+}
+
+
+/* =========================
+   RENDER
+========================= */
+
+async function render(a){
+
+if(!a.length){
+
+$('content').innerHTML =
+'<div class="error">Babu ayoyi a wannan page.</div>';
+
+return;
+
+}
+
+
+let maps={};
+
+
+await Promise.all(
+
+[
+...new Set(
+a.map(
+x=>x.surah.number
+)
+)
+]
+
+.map(async n=>{
+
+maps[n]=
+await hausa(n);
+
+})
+
+);
+
+
+let html='';
+
+let lastS=0;
+
+let lastH=0;
+
+
+for(const x of a){
+
+
+if(lastS !== x.surah.number){
+
+let s =
+surahs[
+x.surah.number-1
+];
+
+
+html += `
+
+<section class="surah-title">
+
+<h2>
+Surah ${esc(
+s?.[0] ||
+x.surah.englishName
+)}
+</h2>
+
+<div class="arabic-name">
+
+${esc(
+s?.[1] ||
+x.surah.name
+)}
+
+</div>
+
+<div class="meta">
+
+Surah ${x.surah.number}
+•
+${s?.[2] ||
+x.surah.numberOfAyahs}
+Ayoyi
+
+</div>
+
+</section>
+
+`;
+
+
+if(x.surah.number !== 9){
+
+html += `
+
+<div class="bismillah">
+
+بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
+
+</div>
+
+`;
+
+}
+
+
+lastS =
+x.surah.number;
+
+}
+
+
+if(lastH !== x.hizbQuarter){
+
+html += `
+
+<div class="marker">
+
+۞ ${hr(x.hizbQuarter)}
+
+</div>
+
+`;
+
+lastH =
+x.hizbQuarter;
+
+}
+
+
+let t =
+maps[
+x.surah.number
+]?.get(
++x.numberInSurah
+)
+||
+'Ba a samu fassarar wannan aya ba.';
+
+
+html += `
+
+<article
+class="ayah"
+id="ayah-${x.number}"
+>
+
+<div class="arabic">
+
+${esc(x.text)}
+
+<span class="ayah-number">
+
+${x.numberInSurah}
+
+</span>
+
+</div>
+
+
+<div class="translation">
+
+${esc(t)}
+
+</div>
+
+
+<div class="audio-row">
+
+<audio
+controls
+preload="none"
+src="${audio(x.number)}"
+>
+</audio>
+
+<span class="meta">
+
+${x.surah.number}:${x.numberInSurah}
+
+•
+
+Page ${x.page}
+
+•
+
+Juz ${x.juz}
+
+•
+
+${hr(x.hizbQuarter)}
+
+</span>
+
+</div>
+
+</article>
+
+`;
+
+}
+
+
+$('content').innerHTML =
+html;
+
+
+let f=a[0];
+
+let l=a[a.length-1];
+
+
+$('status').innerHTML = `
+
+<span>
+
+📖 Page
+<b>${page}</b>
+/
+604
+
+</span>
+
+<span>
+
+Juz ${f.juz}
+
+•
+
+${hr(f.hizbQuarter)}
+
+•
+
+${f.surah.number}:${f.numberInSurah}
+
+–
+
+${l.surah.number}:${l.numberInSurah}
+
+</span>
+
+`;
+
+}
+
+
+/* =========================
+   OPEN SURAH
+========================= */
+
+async function surah(n){
+
+try{
+
+$('content').innerHTML = `
+
+<div class="loading">
+
+<div class="spinner">
+📖
+</div>
+
+Ana neman Surah...
+
+</div>
+
+`;
+
+
+let d =
+await getJSON(
+`${API}/surah/${n}/quran-uthmani`
+);
+
+
+let x =
+d.data.ayahs[0];
+
+
+await loadPage(
+x.page,
+false
+);
+
+
+setTimeout(()=>{
+
+document
+.getElementById(
+'ayah-'+x.number
+)
+?.scrollIntoView({
+
+behavior:'smooth',
+
+block:'center'
+
+});
+
+},100);
+
+
+}catch(e){
+
+$('content').innerHTML = `
+
+<div class="error">
+
+${esc(e.message)}
+
+</div>
+
+`;
+
+}
+
+}
+
+
+/* =========================
+   SEARCH
+========================= */
+
+async function search(){
+
+let q =
+$('searchInput')
+.value
+.trim();
+
+
+if(!q)
+return;
+
+
+$('searchResults').innerHTML = `
+
+<div class="results">
+
+Ana nema...
+
+</div>
+
+`;
+
+
+try{
+
+
+let m =
+q.match(
+/^(\d{1,3})\s*[:.]\s*(\d{1,3})$/
+);
+
+
+if(m){
+
+let d =
+await getJSON(
+
+`${API}/ayah/`+
+encodeURIComponent(
+m[1]+':'+m[2]
+)+
+`/quran-uthmani`
+
+);
+
+
+await loadPage(
+d.data.page,
+false
+);
+
+
+setTimeout(()=>{
+
+document
+.getElementById(
+'ayah-'+d.data.number
+)
+?.scrollIntoView({
+
+behavior:'smooth',
+
+block:'center'
+
+});
+
+},100);
+
+
+return;
+
+}
+
+
+let d =
+await getJSON(
+
+`${API}/search/`+
+encodeURIComponent(q)+
+`/all/quran-uthmani`
+
+);
+
+
+let ms =
+d.data?.matches || [];
+
+
+if(!ms.length){
+
+$('searchResults').innerHTML = `
+
+<div class="results">
+
+Ba a sami sakamako ba.
+
+</div>
+
+`;
+
+return;
+
+}
+
+
+let h = `
+
+<div class="results">
+
+<b>
+An samu ${ms.length} sakamako.
+</b>
+
+`;
+
+
+ms.slice(0,50)
+.forEach(x=>{
+
+h += `
+
+<div
+class="result"
+data-n="${x.number}"
+>
+
+<b>
+
+${esc(x.surah.englishName)}
+
+${x.numberInSurah}
+
+</b>
+
+<span class="meta">
+
+Page ${x.page}
+
+</span>
+
+<br>
+
+<span dir="rtl">
+
+${esc(x.text)}
+
+</span>
+
+</div>
+
+`;
+
+});
+
+
+h += '</div>';
+
+
+$('searchResults').innerHTML =
+h;
+
+
+document
+.querySelectorAll('.result')
+.forEach(el=>{
+
+el.onclick =
+async()=>{
+
+let n =
++el.dataset.n;
+
+
+let d =
+await getJSON(
+
+`${API}/ayah/${n}/quran-uthmani`
+
+);
+
+
+await loadPage(
+d.data.page,
+false
+);
+
+
+setTimeout(()=>{
+
+document
+.getElementById(
+'ayah-'+n
+)
+?.scrollIntoView({
+
+behavior:'smooth',
+
+block:'center'
+
+});
+
+},100);
+
+};
+
+});
+
+
+}catch(e){
+
+$('searchResults').innerHTML = `
+
+<div class="results error">
+
+${esc(e.message)}
+
+</div>
+
+`;
+
+}
+
+}
+
+
+/* =========================
+   BOOKMARK
+========================= */
+
+function saveBookmark(){
+
+localStorage.setItem(
+'qBookmark',
+page
+);
+
+showBookmark();
+
+}
+
+
+function showBookmark(){
+
+let saved =
+Number(
+localStorage.getItem(
+'qBookmark'
+)
+);
+
+
+if(!saved){
+
+$('bookmarkBox').innerHTML =
+'';
+
+return;
+
+}
+
+
+$('bookmarkBox').innerHTML = `
+
+<div class="bookmark">
+
+🔖
+
+An ajiye Page
+<b>${saved}</b>
+
+<br>
+
+<button
+onclick="loadPage(${saved})"
+style="margin-top:7px"
+>
+
+Buɗe Bookmark
+
+</button>
+
+</div>
+
+`;
+
+}
+
+
+/* =========================
+   BUTTONS
+========================= */
+
+$('prevBtn').onclick =
+()=>loadPage(page-1);
+
+
+$('nextBtn').onclick =
+()=>loadPage(page+1);
+
+
+$('pageSelect').onchange =
+e =>
+e.target.value &&
+loadPage(e.target.value);
+
+
+$('surahSelect').onchange =
+e =>
+e.target.value &&
+surah(e.target.value);
+
+
+$('juzSelect').onchange =
+e =>
+e.target.value &&
+loadPage(
+juzStartPages[
+e.target.value-1
+]
+);
+
+
+$('searchBtn').onclick =
+search;
+
+
+$('searchInput').onkeydown =
+e =>
+e.key==='Enter' &&
+search();
+
+
+$('bookmarkBtn').onclick =
+saveBookmark;
+
+
+/* =========================
+   DARK MODE
+========================= */
+
+$('darkBtn').onclick = ()=>{
+
+document.body
+.classList
+.toggle('dark');
+
+
+let d =
+document.body
+.classList
+.contains('dark');
+
+
+localStorage.setItem(
+'qDark',
+d?'1':'0'
+);
+
+
+$('darkBtn').textContent =
+d
+?
+'☀️ Light'
+:
+'🌙 Dark';
+
+};
+
+
+/* =========================
+   FONT
+========================= */
+
+$('fontPlus').onclick = ()=>{
+
+arabicSize =
+Math.min(
+46,
+arabicSize+2
+);
+
+transSize =
+Math.min(
+30,
+transSize+1
+);
+
+sizes();
+
+};
+
+
+$('fontMinus').onclick = ()=>{
+
+arabicSize =
+Math.max(
+20,
+arabicSize-2
+);
+
+transSize =
+Math.max(
+12,
+transSize-1
+);
+
+sizes();
+
+};
+
+
+/* =========================
+   SWIPE SUPPORT
+========================= */
+
+let touchStartX = 0;
+
+let touchEndX = 0;
+
+
+document.addEventListener(
+'touchstart',
+function(e){
+
+touchStartX =
+e.changedTouches[0].screenX;
+
+},
+{passive:true}
+);
+
+
+document.addEventListener(
+'touchend',
+function(e){
+
+touchEndX =
+e.changedTouches[0].screenX;
+
+handleSwipe();
+
+},
+{passive:true}
+);
+
+
+function handleSwipe(){
+
+let distance =
+touchEndX-touchStartX;
+
+
+if(Math.abs(distance)<70)
+return;
+
+
+/*
+   Swipe left = next page
+   Swipe right = previous page
+*/
+
+
+if(distance<0){
+
+if(page<604)
+loadPage(page+1);
+
+}else{
+
+if(page>1)
+loadPage(page-1);
+
+}
+
+}
+
+
+/* =========================
+   KEYBOARD
+========================= */
+
+document.addEventListener(
+'keydown',
+function(e){
+
+if(
+e.target.tagName === 'INPUT' ||
+e.target.tagName === 'SELECT'
+)
+return;
+
+
+if(e.key === 'ArrowLeft'){
+
+if(page>1)
+loadPage(page-1);
+
+}
+
+
+if(e.key === 'ArrowRight'){
+
+if(page<604)
+loadPage(page+1);
+
+}
+
+});
+
+
+/* =========================
+   START
+========================= */
+
+menus();
+
+sizes();
+
+showBookmark();
+
+
+if(
+localStorage.getItem('qDark')
+==='1'
+){
+
+document.body
+.classList
+.add('dark');
+
+$('darkBtn').textContent =
+'☀️ Light';
+
+}
+
+
+loadPage(1);
+
+</script>
+
+</body>
+
+</html>

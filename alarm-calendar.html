@@ -1,0 +1,432 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#075e35">
+<title>Prayer Times, Alarm & Calendar | Islamic Learning Centre</title><style>
+:root {
+  --green:#075e35;
+  --dark:#06472a;
+  --light:#e8f5ed;
+  --gold:#d6a93a;
+  --text:#18352a;
+  --card:#fff;
+  --bg:#f4f8f5;
+  --border:#dce9df;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:var(--bg);color:var(--text)}
+header{background:var(--green);color:white;text-align:center;padding:25px 15px}
+header h1{margin:0 0 8px}
+nav{background:var(--dark);padding:12px;text-align:center}
+nav a{color:white;text-decoration:none;margin:0 9px;font-size:14px}
+main{max-width:950px;margin:25px auto;padding:0 15px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px;margin-bottom:20px;box-shadow:0 3px 12px #0000000a}
+h2{color:var(--green);margin-top:0}
+.clock{text-align:center;font-size:clamp(36px,9vw,62px);font-weight:bold;color:var(--green)}
+.today{text-align:center;color:#607568;margin-top:8px}
+input,select,button{font:inherit;padding:11px;border-radius:8px}
+input,select{border:1px solid #b9cdbf;width:100%;margin:8px 0 12px;background:white;color:#18352a}
+button{border:0;background:var(--green);color:white;cursor:pointer;margin:4px 3px 4px 0}
+button:hover{background:#0a7543}
+button.secondary{background:#64786b}
+button.gold{background:#a9780c}
+.status{padding:12px;border-radius:8px;background:var(--light);margin-top:12px;line-height:1.5}
+.prayer-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.prayer{background:var(--light);border:1px solid var(--border);padding:13px;border-radius:10px}
+.prayer strong{display:block;color:var(--green);margin-bottom:5px}
+.prayer-time{font-size:22px;font-weight:bold}
+.prayer button{font-size:12px;padding:7px}
+.calendar-head{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:12px}
+.calendar-head h3{margin:0;color:var(--green);text-align:center}
+.calendar{display:grid;grid-template-columns:repeat(7,1fr);gap:5px}
+.day-name,.date-cell{text-align:center;padding:10px 2px;border-radius:8px}
+.day-name{font-weight:bold;color:var(--green);font-size:13px}
+.date-cell{background:#f0f6f1;min-height:42px;cursor:pointer;border:1px solid transparent}
+.date-cell:hover{border-color:var(--green)}
+.date-cell.today-date{background:var(--green);color:white;font-weight:bold}
+.date-cell.selected{outline:2px solid var(--gold)}
+.date-cell.empty{background:transparent;cursor:default}
+.reminder-list{padding-left:20px;line-height:1.8}
+.note{color:#66796d;font-size:13px;line-height:1.5}
+footer{text-align:center;background:var(--dark);color:white;padding:18px;margin-top:30px;font-size:14px}
+@media(max-width:500px){
+ nav a{display:inline-block;margin:5px}
+ .card{padding:15px}
+ .day-name,.date-cell{padding:9px 1px;font-size:13px}
+}
+</style></head><body>
+<header>
+  <h1>🕌 Prayer Times, Alarm & Calendar</h1>
+  <p>Islamic Learning Centre</p>
+</header><nav>
+  <a href="index.html">Home</a>
+  <a href="quran.html">Qur’an</a>
+  <a href="hadith.html">Hadith</a>
+  <a href="dua.html">Du’a</a>
+</nav><main>
+  <section class="card">
+    <h2>Digital Clock</h2>
+    <div class="clock" id="clock">--:--:--</div>
+    <div class="today" id="today"></div>
+  </section>  <section class="card">
+    <h2>🕌 Daily Prayer Times</h2>
+    <p>Enter your city to get its daily prayer timetable.</p><label for="city">City:</label>
+<input id="city" type="text" value="Abuja" placeholder="Example: Zaria">
+
+<label for="country">Country:</label>
+<input id="country" type="text" value="Nigeria">
+
+<label for="method">Calculation method:</label>
+<select id="method">
+  <option value="3">Muslim World League</option>
+  <option value="2">Islamic Society of North America</option>
+  <option value="1">University of Islamic Sciences, Karachi</option>
+  <option value="5">Egyptian General Authority of Survey</option>
+  <option value="4">Umm Al-Qura University, Makkah</option>
+</select>
+
+<button onclick="loadPrayerTimes()">Get Prayer Times</button>
+<div class="status" id="prayerDate">Prayer times have not been loaded yet.</div>
+<div class="prayer-grid" id="prayerGrid" style="margin-top:14px"></div>
+<p class="note">
+  Calculation methods can produce different times. Check with your local mosque for the timetable followed in your area.
+</p>
+
+  </section>  <section class="card">
+    <h2>⏰ Alarm</h2>
+    <label for="alarmTime">Choose alarm time:</label>
+    <input type="time" id="alarmTime"><label for="alarmMessage">Reminder message:</label>
+<input type="text" id="alarmMessage" placeholder="Example: Time to read Qur’an">
+
+<button onclick="setAlarm()">Set Alarm</button>
+<button class="secondary" onclick="stopAlarm()">Stop Alarm</button>
+<div class="status" id="alarmStatus">No alarm has been set.</div>
+<p class="note">
+  Keep this page open for the alarm to work. It may not ring if the page is closed or the phone restricts background activity.
+</p>
+
+  </section>  <section class="card">
+    <h2>📅 Monthly Calendar</h2>
+    <div class="calendar-head">
+      <button class="secondary" onclick="changeMonth(-1)">‹ Previous</button>
+      <h3 id="monthTitle"></h3>
+      <button class="secondary" onclick="changeMonth(1)">Next ›</button>
+    </div>
+    <div class="calendar" id="calendar"></div>
+    <div class="status" id="selectedDate">Select a date.</div>
+  </section>  <section class="card">
+    <h2>📝 Study Reminders</h2>
+    <label for="reminderDate">Reminder date:</label>
+    <input type="date" id="reminderDate"><label for="reminderText">Reminder:</label>
+<input type="text" id="reminderText" placeholder="Example: Revise Suratul Mulk">
+
+<button onclick="addReminder()">Add Reminder</button>
+<ul class="reminder-list" id="reminderList">
+  <li>No reminders added yet.</li>
+</ul>
+<p class="note">Reminders are kept in this page while it is open. They are not phone notifications.</p>
+
+  </section>
+</main><footer>© 2026 Islamic Learning Centre. All rights reserved.</footer><script>
+/* CLOCK */
+function updateClock(){
+  const now=new Date();
+  document.getElementById("clock").textContent=now.toLocaleTimeString([],{
+    hour:"2-digit",minute:"2-digit",second:"2-digit",hour12:true
+  });
+  document.getElementById("today").textContent=now.toLocaleDateString(undefined,{
+    weekday:"long",year:"numeric",month:"long",day:"numeric"
+  });
+}
+updateClock();
+setInterval(updateClock,1000);
+
+
+/* PRAYER TIMES */
+const prayerNames=[
+  ["Fajr","Fajr"],
+  ["Sunrise","Sunrise"],
+  ["Dhuhr","Dhuhr"],
+  ["Asr","Asr"],
+  ["Maghrib","Maghrib"],
+  ["Isha","Isha"]
+];
+
+let prayerTimes={};
+
+function cleanTime(value){
+  return value ? value.split(" ")[0] : "--:--";
+}
+
+async function loadPrayerTimes(){
+  const city=document.getElementById("city").value.trim();
+  const country=document.getElementById("country").value.trim();
+  const method=document.getElementById("method").value;
+  const status=document.getElementById("prayerDate");
+  const grid=document.getElementById("prayerGrid");
+
+  if(!city || !country){
+    alert("Please enter your city and country.");
+    return;
+  }
+
+  status.textContent="Loading prayer times...";
+  grid.innerHTML="";
+
+  try{
+    const url="https://api.aladhan.com/v1/timingsByCity?city="+
+      encodeURIComponent(city)+"&country="+encodeURIComponent(country)+
+      "&method="+encodeURIComponent(method);
+
+    const response=await fetch(url);
+    if(!response.ok) throw new Error("Could not connect to prayer-time service.");
+
+    const result=await response.json();
+    if(result.code!==200) throw new Error("Prayer times could not be found.");
+
+    const timings=result.data.timings;
+    prayerTimes={};
+
+    status.textContent=
+      "Prayer times for "+city+", "+country+" — "+
+      result.data.date.readable+
+      ". Times shown in your device's local time zone.";
+
+    prayerNames.forEach(([name,key])=>{
+      const time=cleanTime(timings[key]);
+      prayerTimes[name]=time;
+
+      const box=document.createElement("div");
+      box.className="prayer";
+
+      const title=document.createElement("strong");
+      title.textContent=name;
+
+      const timeText=document.createElement("div");
+      timeText.className="prayer-time";
+      timeText.textContent=time;
+
+      box.appendChild(title);
+      box.appendChild(timeText);
+
+      if(name!=="Sunrise"){
+        const alarmButton=document.createElement("button");
+        alarmButton.className="gold";
+        alarmButton.textContent="Set alarm";
+        alarmButton.onclick=()=>setPrayerAlarm(name,time);
+        box.appendChild(alarmButton);
+      }
+
+      grid.appendChild(box);
+    });
+  }catch(error){
+    status.textContent="Unable to load prayer times. Check your internet connection and city name, then try again.";
+    console.error(error);
+  }
+}
+
+function setPrayerAlarm(name,time){
+  if(!time || time==="--:--"){
+    alert("Prayer time is not available.");
+    return;
+  }
+  document.getElementById("alarmTime").value=time;
+  document.getElementById("alarmMessage").value="It is time for "+name+" prayer.";
+  setAlarm();
+}
+
+
+/* ALARM */
+let alarmTime="";
+let alarmMessage="";
+let alarmTriggered=false;
+let alarmAudio=null;
+
+function setAlarm(){
+  const selected=document.getElementById("alarmTime").value;
+  if(!selected){
+    alert("Please choose an alarm time.");
+    return;
+  }
+
+  alarmTime=selected;
+  alarmMessage=document.getElementById("alarmMessage").value.trim()||
+    "Your reminder time has arrived.";
+  alarmTriggered=false;
+
+  try{
+    const AudioContext=window.AudioContext||window.webkitAudioContext;
+    if(AudioContext){
+      alarmAudio=new AudioContext();
+      if(alarmAudio.state==="suspended") alarmAudio.resume();
+    }
+  }catch(error){alarmAudio=null;}
+
+  document.getElementById("alarmStatus").textContent=
+    "Alarm set for "+alarmTime+". Keep this page open.";
+}
+
+function checkAlarm(){
+  if(!alarmTime||alarmTriggered)return;
+  const now=new Date();
+  const current=String(now.getHours()).padStart(2,"0")+":"+
+    String(now.getMinutes()).padStart(2,"0");
+
+  if(current===alarmTime){
+    alarmTriggered=true;
+    document.getElementById("alarmStatus").textContent="⏰ "+alarmMessage;
+    ringAlarm();
+    alert("⏰ "+alarmMessage);
+  }
+}
+setInterval(checkAlarm,1000);
+
+function ringAlarm(){
+  if(!alarmAudio)return;
+  let count=0;
+
+  function beep(){
+    if(!alarmAudio||count>=10)return;
+    const oscillator=alarmAudio.createOscillator();
+    const gain=alarmAudio.createGain();
+    oscillator.frequency.value=880;
+    gain.gain.value=0.18;
+    oscillator.connect(gain);
+    gain.connect(alarmAudio.destination);
+    oscillator.start();
+    oscillator.stop(alarmAudio.currentTime+0.25);
+    count++;
+    setTimeout(beep,500);
+  }
+  beep();
+}
+
+function stopAlarm(){
+  if(alarmAudio){
+    try{alarmAudio.close();}catch(error){}
+    alarmAudio=null;
+  }
+  alarmTime="";
+  alarmTriggered=false;
+  document.getElementById("alarmStatus").textContent="Alarm stopped.";
+}
+
+
+/* CALENDAR */
+let calendarDate=new Date();
+let selectedCalendarDate=new Date();
+
+function renderCalendar(){
+  const year=calendarDate.getFullYear();
+  const month=calendarDate.getMonth();
+
+  document.getElementById("monthTitle").textContent=
+    calendarDate.toLocaleDateString(undefined,{month:"long",year:"numeric"});
+
+  const calendar=document.getElementById("calendar");
+  calendar.innerHTML="";
+
+  ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"].forEach(day=>{
+    const item=document.createElement("div");
+    item.className="day-name";
+    item.textContent=day;
+    calendar.appendChild(item);
+  });
+
+  const firstDay=new Date(year,month,1).getDay();
+  const totalDays=new Date(year,month+1,0).getDate();
+  const today=new Date();
+
+  for(let i=0;i<firstDay;i++){
+    const empty=document.createElement("div");
+    empty.className="date-cell empty";
+    calendar.appendChild(empty);
+  }
+
+  for(let day=1;day<=totalDays;day++){
+    const cell=document.createElement("button");
+    cell.type="button";
+    cell.className="date-cell";
+    cell.textContent=day;
+
+    if(day===today.getDate()&&month===today.getMonth()&&year===today.getFullYear()){
+      cell.classList.add("today-date");
+    }
+    if(day===selectedCalendarDate.getDate()&&month===selectedCalendarDate.getMonth()&&year===selectedCalendarDate.getFullYear()){
+      cell.classList.add("selected");
+    }
+
+    cell.onclick=()=>{
+      selectedCalendarDate=new Date(year,month,day);
+      document.getElementById("selectedDate").textContent=
+        selectedCalendarDate.toLocaleDateString(undefined,{
+          weekday:"long",year:"numeric",month:"long",day:"numeric"
+        });
+      renderCalendar();
+    };
+    calendar.appendChild(cell);
+  }
+}
+
+function changeMonth(amount){
+  calendarDate.setMonth(calendarDate.getMonth()+amount);
+  renderCalendar();
+}
+
+document.getElementById("selectedDate").textContent=
+  selectedCalendarDate.toLocaleDateString(undefined,{
+    weekday:"long",year:"numeric",month:"long",day:"numeric"
+  });
+renderCalendar();
+
+
+/* STUDY REMINDERS */
+let reminders=[];
+
+function addReminder(){
+  const date=document.getElementById("reminderDate").value;
+  const message=document.getElementById("reminderText").value.trim();
+
+  if(!date||!message){
+    alert("Please enter both a date and a reminder.");
+    return;
+  }
+
+  reminders.push({date,message});
+  reminders.sort((a,b)=>a.date.localeCompare(b.date));
+  document.getElementById("reminderDate").value="";
+  document.getElementById("reminderText").value="";
+  showReminders();
+}
+
+function showReminders(){
+  const list=document.getElementById("reminderList");
+  list.innerHTML="";
+
+  if(reminders.length===0){
+    list.innerHTML="<li>No reminders added yet.</li>";
+    return;
+  }
+
+  reminders.forEach((reminder,index)=>{
+    const item=document.createElement("li");
+    item.appendChild(document.createTextNode(reminder.date+" — "+reminder.message+" "));
+
+    const remove=document.createElement("button");
+    remove.className="secondary";
+    remove.textContent="Remove";
+    remove.onclick=()=>{
+      reminders.splice(index,1);
+      showReminders();
+    };
+
+    item.appendChild(remove);
+    list.appendChild(item);
+  });
+}
+
+/* Load prayer times for the default city */
+loadPrayerTimes();
+</script></body>
+</html>

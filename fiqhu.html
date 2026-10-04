@@ -1,0 +1,1084 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Fiqhu | Islamic Learning Centre</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f5f1df;
+    color: #333;
+    line-height: 1.7;
+}
+
+header {
+    background: #0d4d2b;
+    color: white;
+    text-align: center;
+    padding: 28px 15px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 30px;
+}
+
+header p {
+    margin: 6px 0 0;
+}
+
+nav {
+    background: #083c22;
+    text-align: center;
+    padding: 12px 5px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 5px 7px;
+    font-size: 14px;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+.container {
+    max-width: 950px;
+    margin: auto;
+    padding: 20px 15px;
+}
+
+.intro {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 3px 12px rgba(0,0,0,.12);
+    margin-bottom: 20px;
+}
+
+.intro h2 {
+    color: #0d4d2b;
+}
+
+.search-box {
+    margin: 20px 0;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid #bbb;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+.lesson {
+    background: white;
+    margin-bottom: 12px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 9px rgba(0,0,0,.12);
+}
+
+.lesson button {
+    width: 100%;
+    border: none;
+    background: #0d4d2b;
+    color: white;
+    padding: 16px;
+    text-align: left;
+    font-size: 17px;
+    cursor: pointer;
+}
+
+.lesson button:hover {
+    background: #12683b;
+}
+
+.content {
+    display: none;
+    padding: 20px;
+}
+
+.content.active {
+    display: block;
+}
+
+h2, h3 {
+    color: #0d4d2b;
+}
+
+.arabic {
+    direction: rtl;
+    text-align: right;
+    font-size: 25px;
+    line-height: 2;
+    background: #f8f5e8;
+    padding: 15px;
+    border-radius: 8px;
+    margin: 12px 0;
+}
+
+.hausa {
+    background: #eef7ef;
+    border-left: 4px solid #0d4d2b;
+    padding: 15px;
+    border-radius: 5px;
+    margin: 12px 0;
+}
+
+.fard {
+    background: #fff1f1;
+    border-left: 5px solid #b3261e;
+    padding: 15px;
+    margin: 12px 0;
+    border-radius: 6px;
+}
+
+.sunna {
+    background: #f0f6ff;
+    border-left: 5px solid #1769aa;
+    padding: 15px;
+    margin: 12px 0;
+    border-radius: 6px;
+}
+
+.note {
+    background: #fff8df;
+    border-left: 5px solid #c58b00;
+    padding: 15px;
+    margin: 12px 0;
+    border-radius: 6px;
+}
+
+.question {
+    background: #f3eefb;
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 15px;
+}
+
+.badge {
+    display: inline-block;
+    background: #0d4d2b;
+    color: white;
+    padding: 4px 9px;
+    border-radius: 5px;
+    margin-bottom: 8px;
+}
+
+li {
+    margin-bottom: 6px;
+}
+
+footer {
+    background: #0d4d2b;
+    color: white;
+    text-align: center;
+    padding: 22px;
+    margin-top: 30px;
+}
+
+@media(max-width:600px) {
+    header h1 {
+        font-size: 24px;
+    }
+
+    nav a {
+        display: inline-block;
+    }
+
+    .arabic {
+        font-size: 21px;
+    }
+
+    .lesson button {
+        font-size: 15px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>فِقْهُ الإِسْلَام</h1>
+    <p>Fiqhu Lessons — Mazhabar Mālikiyya</p>
+</header>
+
+<nav>
+    <a href="index.html">Home</a>
+    <a href="quran.html">Qur'an</a>
+    <a href="hadith.html">Hadith</a>
+    <a href="tajweed.html">Tajweed</a>
+    <a href="dua.html">Du'a</a>
+    <a href="fiqhu.html">Fiqhu</a>
+    <a href="about.html">About</a>
+    <a href="support.html">Support Us</a>
+    <a href="contact.html">Contact</a>
+</nav>
+
+<div class="container">
+
+<div class="intro">
+
+<h2>📚 Ilimin Fiqhu</h2>
+
+<p>
+Wannan shafi ya ƙunshi darussa na Fiqhu bisa
+<strong>Mazhabar Mālikiyya</strong>, tare da bayanin
+Hausa da nassosin Qur'ani da Hadith inda ya dace.
+</p>
+
+<div class="arabic">
+الفِقْهُ هُوَ مَعْرِفَةُ الأَحْكَامِ الشَّرْعِيَّةِ
+العَمَلِيَّةِ مِنْ أَدِلَّتِهَا التَّفْصِيلِيَّةِ
+</div>
+
+<div class="hausa">
+<strong>Ma'ana:</strong>
+Fiqhu shi ne sanin hukunce-hukuncen Shari'a da suka
+shafi ayyukan Musulmi tare da hujjojin da suka tabbatar da su.
+</div>
+
+<div class="note">
+<strong>⚠️ Muhimmin bayani:</strong>
+Wannan shafi na koyarwa ne. Akwai wasu bambance-bambance
+tsakanin mazhabobi da kuma wasu bayanai cikin littattafan
+Mālikiyya. A wajen fatawa ko wani lamari na musamman,
+a tambayi malamin Fiqhu.
+</div>
+
+</div>
+
+
+<div class="search-box">
+<input type="text" id="search"
+placeholder="🔎 Bincika darasi...">
+</div>
+
+
+<!-- 1 -->
+
+<div class="lesson">
+
+<button onclick="toggleLesson(this)">
+1️⃣ Ma'anar Fiqhu — معنى الفقه
+</button>
+
+<div class="content">
+
+<h3>Menene Fiqhu?</h3>
+
+<p>
+Fiqhu ilimi ne da yake koyar da hukunce-hukuncen Shari'a
+da suka shafi ayyukan Musulmi.
+</p>
+
+<div class="arabic">
+وَمَا أُمِرُوا إِلَّا لِيَعْبُدُوا اللَّهَ
+مُخْلِصِينَ لَهُ الدِّينَ
+</div>
+
+<div class="hausa">
+Ana koyar da Fiqhu ne domin Musulmi ya san yadda zai
+yi ibadarsa da kuma mu'amalarsa bisa koyarwar Musulunci.
+</div>
+
+</div>
+</div>
+
+
+<!-- 2 -->
+
+<div class="lesson">
+
+<button onclick="toggleLesson(this)">
+2️⃣ Tsarki — الطهارة
+</button>
+
+<div class="content">
+
+<h3>Ma'anar Tsarki</h3>
+
+<p>
+Tsarki yana daga cikin muhimman abubuwan ibada.
+Ya haɗa da tsarkin jiki, tufafi da wurin ibada.
+</p>
+
+<div class="arabic">
+إِنَّ اللَّهَ يُحِبُّ التَّوَّابِينَ
+وَيُحِبُّ الْمُتَطَهِّرِينَ
+</div>
+
+<div class="hausa">
+Allah yana son masu tuba kuma yana son masu tsarkake kansu.
+</div>
+
+</div>
+</div>
+
+
+<!-- 3 -->
+
+<div class="lesson">
+
+<button onclick="toggleLesson(this)">
+3️⃣ Najasa — النجاسة
+</button>
+
+<div class="content">
+
+<h3>Menene Najasa?</h3>
+
+<p>
+Najasa ita ce wani abu da Shari'a ta hukunta cewa ba shi da tsarki.
+</p>
+
+<div class="hausa">
+
+<strong>Misalai:</strong>
+
+<ul>
+<li>Fitsari</li>
+<li>Kashi</li>
+<li>Jini a wasu yanayi</li>
+<li>Wasu abubuwan da Shari'a ta ayyana a matsayin najasa</li>
+</ul>
+
+<p>
+Idan najasa ta kasance a jiki, tufafi ko wurin sallah,
+ana tsarkake wurin gwargwadon hukuncin Shari'a.
+</p>
+
+</div>
+
+</div>
+</div>
+
+
+<!-- 4 ALWALA -->
+
+<div class="lesson">
+
+<button onclick="toggleLesson(this)">
+4️⃣ Alwala — الوضوء
+</button>
+
+<div class="content">
+
+<h3>Ma'anar Alwala</h3>
+
+<div class="arabic">
+يَا أَيُّهَا الَّذِينَ آمَنُوا إِذَا قُمْتُمْ
+إِلَى الصَّلَاةِ فَاغْسِلُوا وُجُوهَكُمْ
+وَأَيْدِيَكُمْ إِلَى الْمَرَافِقِ
+وَامْسَحُوا بِرُءُوسِكُمْ
+وَأَرْجُلَكُمْ إِلَى الْكَعْبَيْنِ
+</div>
+
+<div class="hausa">
+Wannan aya tana bayyana umarnin yin alwala kafin sallah
+da sauran ibadun da suke buƙatar tsarki.
+</div>
+
+<div class="fard">
+
+<h3>Farillan Alwala a Mālikiyya</h3>
+
+<ol>
+<li>Niyya.</li>
+<li>Wanke fuska.</li>
+<li>Wanke hannaye har zuwa gwiwar hannu.</li>
+<li>Shafar kai.</li>
+<li>Wanke ƙafafu har zuwa idon sawu.</li>
+<li>Gaggauta yin ayyukan alwala ba tare da dogon
+katsewa ba (*al-muwālāh*).</li>
+</ol>
+
+</div>
+
+<div class="sunna">
+
+<h3>Sunnonin Alwala</h3>
+
+<ul>
+<li>Wanke hannaye a farko.</li>
+<li>Kurkurar baki.</li>
+<li>Shigar da ruwa cikin hanci.</li>
+<li>Fitar da ruwa daga hanci.</li>
+<li>Shafa kunnuwa.</li>
+<li>Sake sabunta ruwa wajen wasu sassan shafawa.</li>
+<li>Tsara ayyukan alwala yadda aka koyar.</li>
+</ul>
+
+<p>
+Akwai ƙarin bayanai da rabe-rabe a cikin littattafan Mālikiyya.
+</p>
+
+</div>
+
+<div class="question">
+<strong>Tambaya:</strong>
+Me ya sa Musulmi yake yin alwala kafin sallah?
+</div>
+
+</div>
+</div>
+
+
+<!-- 5 -->
+
+<div class="lesson">
+
+<button onclick="toggleLesson(this)">
+5️⃣ Abubuwan da suke karya Alwala
+</button>
+
+<div class="content">
+
+<h3>Masu karya Alwala</h3>
+
+<ul>
+<li>Fitowar wani abu daga gaba ko baya.</li>
+<li>Rashin hankali ko gushewar fahimta.</li>
+<li>Wasu yanayi da Shari'a ta ayyana.</li>
+<li>Taɓa al'aura yana da cikakken bayani na musamman
+a cikin mazhabobi.</li>
+</ul>
+
+<div class="note">
+A Mālikiyya akwai cikakkun bayanai game da abubuwan da
+suke karya alwala da kuma sharuddan kowanne. Saboda haka
+kar a ɗauki kowane taɓawa ko motsi a matsayin mai karya
+alwala kai tsaye.
+</div>
+
+</div>
+</div>
+
+
+<!-- 6 WANKA -->
+
+<div class="lesson">
+
+<button onclick="toggleLesson(this)">
+6️⃣ Wanka — الغُسل
+</button>
+
+<div class="content">
+
+<h3>Ma'anar Wanka</h3>
+
+<p>
+Wankan Shari'a shi ne tsarkake dukkan jiki da ruwa
+bisa yadda Shari'a ta koyar.
+</p>
+
+<div class="arabic">
+وَإِنْ كُنْتُمْ جُنُبًا فَاطَّهَّرُوا
+</div>
+
+<div class="hausa">
+Idan mutum yana cikin janaba, wajibi ne ya tsarkake kansa
+kafin ibadun da suke buƙatar tsarkin janaba.
+</div>
+
+<div class="fard">
+
+<h3>Farillan Wanka a Mālikiyya</h3>
+
+<ol>
+<li>Niyya.</li>
+<li>Shigar ruwa ga dukkan jiki.</li>
+<li>Goga jiki (*dalk*).</li>
+<li>Ci gaba da wanka ba tare da dogon katsewa ba
+a lokacin da ake buƙata.</li>
+</ol>
+
+</div>
+
+<div class="sunna">
+
+<h3>Sunnonin Wanka</h3>
+
+<ul>
+<li>Wanke hannaye da farko.</li>
+<li>Tsabtace wuraren da suke buƙatar tsaftacewa.</li>
+<li>Yin alwala kafin wanka.</li>
+<li>Fara da kan jiki sannan sauran jiki.</li>
+<li>Yin wanka cikin tsari mai kyau.</li>
+</ul>
+
+</div>
+
+</div>
+</div>
+
+
+<!-- 7 TAYAMMUM -->
+
+<div class="lesson">
+
+<button onclick="toggleLesson(this)">
+7️⃣ Tayammum — التيمم
+</button>
+
+<div class="content">
+
+<h3>Menene Tayammum?</h3>
+
+<div class="arabic">
+فَتَيَمَّمُوا صَعِيدًا طَيِّبًا
+فَامْسَحُوا بِوُجُوهِكُمْ وَأَيْدِيكُمْ مِنْهُ
+</div>
+
+<div class="hausa">
+Tayammum wata hanyar tsarkakewa ce da ake yi da ƙasa
+mai tsarki idan akwai uzurin Shari'a da ya hana amfani da ruwa.
+</div>
+
+<div class="fard">
+
+<h3>Abubuwan wajibi a Tayammum</h3>
+
+<ul>
+<li>Niyya.</li>
+<li>Amfani da abu/ƙasa mai tsarki da ta dace.</li>
+<li>Shafar fuska.</li>
+<li>Shafar hannaye.</li>
+<li>Yin aikin cikin lokaci da sharuddan da Shari'a ta tanada.</li>
+</ul>
+
+</div>
+
+<div class="sunna">
+
+<h3>Sunnoni</h3>
+
+<ul>
+<li>Bin tsarin da aka koyar.</li>
+<li>Yin ayyukan cikin natsuwa.</li>
+<li>Amfani da abu mai tsarki.</li>
+</ul>
+
+</div>
+
+</div>
+</div>
+
+
+<!-- 8 -->
+
+<div class="lesson">
+
+<button onclick="toggleLesson(this)">
+8️⃣ Lokutan Sallah — أوقات الصلاة
+</button>
+
+<div class="content">
+
+<h3>Sallolin Farilla guda biyar</h3>
+
+<ul>
+<li>Asuba — Fajr</li>
+<li>Azahar — Dhuhr</li>
+<li>La'asar — Asr</li>
+<li>Magriba — Maghrib</li>
+<li>Isha — Isha</li>
+</ul>
+
+<div class="hausa">
+Kowace sallah tana da lokacin da Shari'a ta kayyade.
+Musulmi ya kiyaye yin sallah a cikin lokacinta.
+</div>
+
+</div>
+</div>
+
+
+<!-- 9 -->
+
+<div class="lesson">
+
+<button onclick="toggleLesson(this)">
+9️⃣ Sharuddan Sallah — شروط الصلاة
+</button>
+
+<div class="content">
+
+<h3>Wasu daga cikin sharuddan Sallah</h3>
+
+<ul>
+<li>Shigar lokacin sallah.</li>
+<li>Tsarki daga hadasi.</li>
+<li>Tsarkin jiki, tufafi da wurin sallah daga najasa.</li>
+<li>Sutura.</li>
+<li>Fuskantar Qibla.</li>
+<li>Niyya.</li>
+</ul>
+
+<div class="note">
+Cikakken bayani game da sharuddan sallah yana da
+rabe-rabe bisa yanayin mutum da ibadar da yake yi.
+</div>
+
+</div>
+</div>
+
+
+<!-- 10 SALLAH -->
+
+<div class="lesson">
+
+<button onclick="toggleLesson(this)">
+🔟 Farillai da Sunnonin Sallah
+</button>
+
+<div class="content">
+
+<h3>Farillai / Ayyukan da sallah ba ta inganta ba tare da su ba</h3>
+
+<div class="fard">
+
+<ul>
+<li>Niyya.</li>
+<li>Takbiratul Ihram.</li>
+<li>Tsayuwa ga wanda yake da iko a sallar farilla.</li>
+<li>Karatu gwargwadon abin da Shari'a ta wajabta.</li>
+<li>Ruku'u.</li>
+<li>Yin sujada.</li>
+<li>Zaune tsakanin sujada.</li>
+<li>Wasu ginshiƙai da ayyukan sallah da tsarin Mālikiyya ya ayyana.</li>
+<li>Salama da kammala sallah bisa tsarin da Shari'a ta koyar.</li>
+</ul>
+
+</div>
+
+<h3>Sunnonin Sallah</h3>
+
+<div class="sunna">
+
+<ul>
+<li>Wasu ƙarin zikiri da addu'o'i.</li>
+<li>Ƙarin karatu a wuraren da Sunnah ta koyar.</li>
+<li>Wasu daga cikin siffofin zama da motsin sallah.</li>
+<li>Yin ayyukan sallah cikin natsuwa da kyakkyawan tsari.</li>
+</ul>
+
+</div>
+
+<div class="note">
+Adadin da ake kira farillai, sunnoni da faḍā'il a cikin
+Mālikiyya yana buƙatar a duba littafin Fiqhun Mālikiyya
+da ake karantawa saboda rabe-raben malamai na iya bambanta.
+</div>
+
+</div>
+</div>
+
+
+<!-- 11 -->
+
+<div class="lesson">
+
+<button onclick="toggleLesson(this)">
+1️⃣1️⃣ Abubuwan da suke karya Sallah
+</button>
+
+<div class="content">
+
+<ul>
+<li>Yin magana da gangan ba tare da bukata ba.</li>
+<li>Barin abin da yake ginshiƙi na sallah da gangan.</li>
+<li>Yin wani babban aiki da ba ya cikin sallah.</li>
+<li>Wasu abubuwan da suke sabawa tsarin sallah.</li>
+</ul>
+
+<div class="note">
+Akwai cikakken bayani game da abin da ke karya sallah,
+abin da yake wajabta sujudus-sahw da abin da ake yafewa.
+</div>
+
+</div>
+</div>
+
+
+<!-- 12 -->
+
+<div class="lesson">
+
+<button onclick="toggleLesson(this)">
+1️⃣2️⃣ Azumi — الصيام
+</button>
+
+<div class="content">
+
+<div class="arabic">
+كُتِبَ عَلَيْكُمُ الصِّيَامُ
+كَمَا كُتِبَ عَلَى الَّذِينَ مِنْ قَبْلِكُمْ
+</div>
+
+<div class="hausa">
+Allah Ya wajabta azumi ga muminai kamar yadda Ya wajabta
+shi ga al'ummomin da suka gabata.
+</div>
+
+<h3>Abubuwan da suka shafi azumi</h3>
+
+<ul>
+<li>Niyya.</li>
+<li>Barin ci da sha daga alfijir zuwa faɗuwar rana.</li>
+<li>Barin abubuwan da Shari'a ta haramta lokacin azumi.</li>
+<li>Kiyaye ladabin azumi.</li>
+</ul>
+
+</div>
+</div>
+
+
+<!-- 13 -->
+
+<div class="lesson">
+
+<button onclick="toggleLesson(this)">
+1️⃣3️⃣ Abubuwan da suke karya Azumi
+</button>
+
+<div class="content">
+
+<ul>
+<li>Ci da gangan.</li>
+<li>Sha da gangan.</li>
+<li>Wasu ayyukan da Shari'a ta ayyana a matsayin masu karya azumi.</li>
+</ul>
+
+<div class="note">
+Akwai bambanci tsakanin abin da yake karya azumi,
+abin da yake rage ladarsa, da abin da yake wajabta
+ramuwa ko kaffara. Wannan yana buƙatar cikakken bayani.
+</div>
+
+</div>
+</div>
+
+
+<!-- 14 -->
+
+<div class="lesson">
+
+<button onclick="toggleLesson(this)">
+1️⃣4️⃣ Zakka — الزكاة
+</button>
+
+<div class="content">
+
+<div class="arabic">
+وَأَقِيمُوا الصَّلَاةَ وَآتُوا الزَّكَاةَ
+</div>
+
+<div class="hausa">
+Zakka ibada ce ta dukiya da Allah Ya wajabta ga wanda
+ya cika sharuddan wajabcin ta.
+</div>
+
+<h3>Wasu sharuddan wajabcin Zakka</h3>
+
+<ul>
+<li>Musulunci.</li>
+<li>Mallakar dukiyar da Shari'a ta sanya mata zakka.</li>
+<li>Cikar nisabi a wuraren da ake buƙatar sa.</li>
+<li>Cikar lokacin da Shari'a ta kayyade a dukiyar da ake buƙatar sa.</li>
+</ul>
+
+</div>
+</div>
+
+
+<!-- 15 -->
+
+<div class="lesson">
+
+<button onclick="toggleLesson(this)">
+1️⃣5️⃣ Masu cancantar Zakka
+</button>
+
+<div class="content">
+
+<div class="arabic">
+إِنَّمَا الصَّدَقَاتُ لِلْفُقَرَاءِ
+وَالْمَسَاكِينِ وَالْعَامِلِينَ عَلَيْهَا
+...
+</div>
+
+<div class="hausa">
+Qur'ani ya bayyana nau'o'in mutanen da ake ba zakka.
+Daga cikinsu akwai fakirai, miskinai da sauran rukunin
+da aya ta ayyana.
+</div>
+
+</div>
+</div>
+
+
+<!-- 16 -->
+
+<div class="lesson">
+
+<button onclick="toggleLesson(this)">
+1️⃣6️⃣ Hajji — الحج
+</button>
+
+<div class="content">
+
+<div class="arabic">
+وَلِلَّهِ عَلَى النَّاسِ حِجُّ الْبَيْتِ
+مَنِ اسْتَطَاعَ إِلَيْهِ سَبِيلًا
+</div>
+
+<div class="hausa">
+Hajji ibada ce da ake yi a Makka ga wanda ya cika
+sharuddan wajabcinsa kuma yake da ikon zuwa.
+</div>
+
+<h3>Wasu ayyukan Hajji</h3>
+
+<ul>
+<li>Ihram.</li>
+<li>Tsayuwar Arafah.</li>
+<li>Ɗawafin Ka'aba.</li>
+<li>Sa'ayi tsakanin Safa da Marwa.</li>
+<li>Sauran ayyukan Hajji bisa tsarin Shari'a.</li>
+</ul>
+
+</div>
+</div>
+
+
+<!-- 17 -->
+
+<div class="lesson">
+
+<button onclick="toggleLesson(this)">
+1️⃣7️⃣ Umrah — العمرة
+</button>
+
+<div class="content">
+
+<h3>Umrah</h3>
+
+<p>
+Umrah tana ƙunshe da ayyukan ibada da ake yi a Harami,
+kamar ihram, ɗawafi da sa'ayi bisa tsarin Shari'a.
+</p>
+
+<div class="hausa">
+Mai son yin Umrah ya koyi hukunce-hukuncen ihram,
+miqat, ɗawafi, sa'ayi da sauran abubuwan da suka shafe ta.
+</div>
+
+</div>
+</div>
+
+
+<!-- 18 -->
+
+<div class="lesson">
+
+<button onclick="toggleLesson(this)">
+1️⃣8️⃣ Aure — النكاح
+</button>
+
+<div class="content">
+
+<h3>Ma'anar Aure</h3>
+
+<p>
+Aure wata yarjejeniya ce ta Shari'a tsakanin namiji da mace
+wadda take haifar da hakkoki da nauyin da Shari'a ta tanada.
+</p>
+
+<h3>Abubuwan da ya kamata a koya</h3>
+
+<ul>
+<li>Sharuddan aure.</li>
+<li>Sadaki.</li>
+<li>Hakkin ma'aurata.</li>
+<li>Nauyin miji da mata.</li>
+<li>Kyawawan mu'amala tsakanin ma'aurata.</li>
+</ul>
+
+<div class="note">
+Ana bukatar a yi aure bisa dokokin Shari'a da dokokin
+ƙasar da ake zaune a ciki.
+</div>
+
+</div>
+</div>
+
+
+<!-- 19 -->
+
+<div class="lesson">
+
+<button onclick="toggleLesson(this)">
+1️⃣9️⃣ Mu'amaloli — المعاملات
+</button>
+
+<div class="content">
+
+<h3>Mu'amalar Musulmi</h3>
+
+<p>
+Musulunci ya koyar da gaskiya, amana da adalci a cikin
+kasuwanci da sauran mu'amaloli.
+</p>
+
+<div class="arabic">
+وَأَوْفُوا الْكَيْلَ وَالْمِيزَانَ بِالْقِسْطِ
+</div>
+
+<div class="hausa">
+Musulmi ya kamata ya kiyaye gaskiya wajen aunawa,
+sayarwa, saye da sauran harkokin kasuwanci.
+</div>
+
+<h3>Abubuwan da za a koya</h3>
+
+<ul>
+<li>Saye da sayarwa.</li>
+<li>Bashi.</li>
+<li>Amanar dukiya.</li>
+<li>Gaskiya a kasuwanci.</li>
+<li>Barin yaudara.</li>
+</ul>
+
+</div>
+</div>
+
+
+<!-- 20 -->
+
+<div class="lesson">
+
+<button onclick="toggleLesson(this)">
+2️⃣0️⃣ Halal da Haram — الحلال والحرام
+</button>
+
+<div class="content">
+
+<div class="arabic">
+إِنَّ الْحَلَالَ بَيِّنٌ وَإِنَّ الْحَرَامَ بَيِّنٌ
+</div>
+
+<div class="hausa">
+Annabi ﷺ ya koyar cewa halal a bayyane yake,
+haram kuma a bayyane yake, sannan akwai abubuwa
+tsakanin waɗannan da mutane da yawa ba su sani ba.
+</div>
+
+<h3>Darasin</h3>
+
+<ul>
+<li>Musulmi ya nemi ilimi kafin ya yanke hukunci.</li>
+<li>Ya nisanci abin da Shari'a ta haramta.</li>
+<li>Ya kiyaye hakkokin mutane.</li>
+<li>Ya tambayi malamai idan wani hukunci ya rikice masa.</li>
+</ul>
+
+<div class="question">
+<strong>Tambaya:</strong>
+Me ya kamata mutum ya yi idan bai san hukuncin wani abu ba?
+<br><br>
+<strong>Amsa:</strong>
+Ya nemi ilimi kuma ya tambayi wanda ya cancanci bayar da
+bayanin hukuncin Shari'a.
+</div>
+
+</div>
+</div>
+
+
+<div class="intro">
+
+<h2>📝 Tambayoyin Bita</h2>
+
+<ol>
+<li>Menene Fiqhu?</li>
+<li>Menene ma'anar tsarki?</li>
+<li>Menene farillan Alwala?</li>
+<li>Menene sunnonin Alwala?</li>
+<li>Menene abubuwan da suke karya Alwala?</li>
+<li>Menene farillan Wanka?</li>
+<li>Yaushe ake amfani da Tayammum?</li>
+<li>Menene farillan Tayammum?</li>
+<li>Ka ambaci salloli guda biyar.</li>
+<li>Ka ambaci wasu daga cikin sharuddan Sallah.</li>
+<li>Menene ginshiƙan Sallah?</li>
+<li>Menene abubuwan da suke karya Sallah?</li>
+<li>Menene Azumi?</li>
+<li>Menene Zakka?</li>
+<li>Su waye masu cancantar Zakka?</li>
+<li>Menene Hajji?</li>
+<li>Menene Umrah?</li>
+<li>Menene Aure a Musulunci?</li>
+<li>Me ake nufi da Mu'amala?</li>
+<li>Menene bambanci tsakanin Halal da Haram?</li>
+</ol>
+
+</div>
+
+</div>
+
+
+<footer>
+    <p>© 2026 Islamic Learning Centre</p>
+    <p>Fiqhu Lessons — Mazhabar Mālikiyya</p>
+</footer>
+
+
+<script>
+
+function toggleLesson(button) {
+
+    const content = button.nextElementSibling;
+
+    content.classList.toggle("active");
+
+}
+
+
+/* Search Lessons */
+
+document.getElementById("search").addEventListener("input", function() {
+
+    let searchText = this.value.toLowerCase();
+
+    document.querySelectorAll(".lesson").forEach(function(lesson) {
+
+        let text = lesson.innerText.toLowerCase();
+
+        if (text.includes(searchText)) {
+            lesson.style.display = "";
+        } else {
+            lesson.style.display = "none";
+        }
+
+    });
+
+});
+
+</script>
+
+</body>
+</html>

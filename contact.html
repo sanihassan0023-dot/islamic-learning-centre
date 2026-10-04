@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Contact Us | Islamic Learning Centre</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f5f1df;
+    color: #333;
+}
+
+header {
+    background: #0d4d2b;
+    color: white;
+    text-align: center;
+    padding: 25px 15px;
+}
+
+nav {
+    background: #083c22;
+    text-align: center;
+    padding: 12px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 7px;
+    font-size: 14px;
+}
+
+.container {
+    max-width: 800px;
+    margin: 25px auto;
+    padding: 20px;
+}
+
+.card {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 3px 12px rgba(0,0,0,.15);
+}
+
+h2 {
+    color: #0d4d2b;
+}
+
+input,
+textarea {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0 15px;
+    border: 1px solid #ccc;
+    border-radius: 7px;
+    font-size: 15px;
+}
+
+textarea {
+    min-height: 140px;
+}
+
+button {
+    background: #0d4d2b;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+footer {
+    background: #0d4d2b;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 30px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>Contact Us</h1>
+    <p>Islamic Learning Centre</p>
+</header>
+
+<nav>
+    <a href="index.html">Home</a>
+    <a href="quran.html">Qur'an</a>
+    <a href="hadith.html">Hadith</a>
+    <a href="tajweed.html">Tajweed</a>
+    <a href="dua.html">Du'a</a>
+    <a href="about.html">About</a>
+    <a href="support.html">Support Us</a>
+</nav>
+
+<div class="container">
+
+    <div class="card">
+
+        <h2>Get In Touch</h2>
+
+        <p>
+            If you have suggestions, corrections or questions
+            about the website, you can contact us.
+        </p>
+
+        <form
+            action="mailto:aaarsoftware@gmail.com"
+            method="post"
+            enctype="text/plain">
+
+            <label>Your Name</label>
+
+            <input
+                type="text"
+                name="name"
+                required>
+
+
+            <label>Your Email</label>
+
+            <input
+                type="email"
+                name="email"
+                required>
+
+
+            <label>Your Message</label>
+
+            <textarea
+                name="message"
+                required></textarea>
+
+
+            <button type="submit">
+                Send Message
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+<footer>
+    © 2026 Islamic Learning Centre
+</footer>
+
+</body>
+</html>

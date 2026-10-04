@@ -1,0 +1,557 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Islamic Quiz - Islamic Learning Centre</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f8f5;
+    color: #222;
+}
+
+header {
+    background: #087443;
+    color: white;
+    text-align: center;
+    padding: 25px 15px;
+}
+
+.container {
+    max-width: 700px;
+    margin: auto;
+    padding: 15px;
+}
+
+.question {
+    background: white;
+    padding: 20px;
+    margin: 18px 0;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px #ccc;
+}
+
+.question h3 {
+    color: #087443;
+}
+
+.hausa {
+    color: #555;
+    font-style: italic;
+}
+
+.option {
+    display: block;
+    padding: 12px;
+    margin: 8px 0;
+    background: #f0f5f1;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.option:hover {
+    background: #dceee2;
+}
+
+button {
+    background: #087443;
+    color: white;
+    border: none;
+    padding: 14px 25px;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #075c36;
+}
+
+#result {
+    background: white;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 10px;
+    text-align: center;
+    display: none;
+}
+
+.correct {
+    color: green;
+}
+
+.wrong {
+    color: red;
+}
+
+.back {
+    display: block;
+    text-align: center;
+    margin: 25px 0;
+    color: #087443;
+    font-weight: bold;
+    text-decoration: none;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>📝 Islamic Knowledge Quiz</h1>
+    <p>Jarabawar Ilimin Addinin Musulunci</p>
+    <p>Test Your Islamic Knowledge</p>
+</header>
+
+<div class="container">
+
+    <h2>Instructions / Umarnin Jarabawa</h2>
+
+    <p>
+        Choose the correct answer for each question.
+        Select one option only.
+    </p>
+
+    <p>
+        Zaɓi amsar da ta dace ga kowace tambaya.
+        Amsa guda ɗaya kawai za ka zaɓa.
+    </p>
+
+    <form id="quizForm">
+
+        <!-- Question 1 -->
+        <div class="question">
+
+            <h3>1. How many pillars of Islam are there?</h3>
+
+            <p class="hausa">
+                Ginshiƙan Musulunci guda nawa ne?
+            </p>
+
+            <label class="option">
+                <input type="radio" name="q1" value="a">
+                A. Three / Uku
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q1" value="b">
+                B. Five / Biyar
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q1" value="c">
+                C. Six / Shida
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q1" value="d">
+                D. Seven / Bakwai
+            </label>
+
+        </div>
+
+        <!-- Question 2 -->
+        <div class="question">
+
+            <h3>2. Who is the last Prophet of Allah?</h3>
+
+            <p class="hausa">
+                Wane ne Annabin Allah na ƙarshe?
+            </p>
+
+            <label class="option">
+                <input type="radio" name="q2" value="a">
+                A. Musa (AS)
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q2" value="b">
+                B. Isa (AS)
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q2" value="c">
+                C. Muhammad (SAW)
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q2" value="d">
+                D. Ibrahim (AS)
+            </label>
+
+        </div>
+
+        <!-- Question 3 -->
+        <div class="question">
+
+            <h3>3. Which month do Muslims fast?</h3>
+
+            <p class="hausa">
+                A wane wata Musulmi suke azumi?
+            </p>
+
+            <label class="option">
+                <input type="radio" name="q3" value="a">
+                A. Muharram
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q3" value="b">
+                B. Ramadan
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q3" value="c">
+                C. Shawwal
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q3" value="d">
+                D. Rajab
+            </label>
+
+        </div>
+
+        <!-- Question 4 -->
+        <div class="question">
+
+            <h3>4. How many daily obligatory prayers are there?</h3>
+
+            <p class="hausa">
+                Sallolin farilla na kullum guda nawa ne?
+            </p>
+
+            <label class="option">
+                <input type="radio" name="q4" value="a">
+                A. Three / Uku
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q4" value="b">
+                B. Four / Huɗu
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q4" value="c">
+                C. Five / Biyar
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q4" value="d">
+                D. Six / Shida
+            </label>
+
+        </div>
+
+        <!-- Question 5 -->
+        <div class="question">
+
+            <h3>5. Which book was revealed to Prophet Muhammad (SAW)?</h3>
+
+            <p class="hausa">
+                Wane littafi aka saukar wa Annabi Muhammad (SAW)?
+            </p>
+
+            <label class="option">
+                <input type="radio" name="q5" value="a">
+                A. Tawrah
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q5" value="b">
+                B. Zabur
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q5" value="c">
+                C. Injil
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q5" value="d">
+                D. Qur'an
+            </label>
+
+        </div>
+
+        <!-- Question 6 -->
+        <div class="question">
+
+            <h3>6. What is the first Surah in the Qur'an?</h3>
+
+            <p class="hausa">
+                Wace sura ce ta farko a cikin Al-Qur'ani?
+            </p>
+
+            <label class="option">
+                <input type="radio" name="q6" value="a">
+                A. Al-Baqarah
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q6" value="b">
+                B. Al-Fatihah
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q6" value="c">
+                C. Al-Ikhlas
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q6" value="d">
+                D. An-Nas
+            </label>
+
+        </div>
+
+        <!-- Question 7 -->
+        <div class="question">
+
+            <h3>7. Which angel brought revelation to the Prophets?</h3>
+
+            <p class="hausa">
+                Wane Mala'ika ne yake kawo wahayi ga Annabawa?
+            </p>
+
+            <label class="option">
+                <input type="radio" name="q7" value="a">
+                A. Jibril
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q7" value="b">
+                B. Mikail
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q7" value="c">
+                C. Israfil
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q7" value="d">
+                D. Malik
+            </label>
+
+        </div>
+
+        <!-- Question 8 -->
+        <div class="question">
+
+            <h3>8. What is the meaning of Salah?</h3>
+
+            <p class="hausa">
+                Menene ma'anar Sallah?
+            </p>
+
+            <label class="option">
+                <input type="radio" name="q8" value="a">
+                A. Fasting / Azumi
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q8" value="b">
+                B. Prayer / Sallah
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q8" value="c">
+                C. Charity / Sadaka
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q8" value="d">
+                D. Pilgrimage / Hajji
+            </label>
+
+        </div>
+
+        <!-- Question 9 -->
+        <div class="question">
+
+            <h3>9. What is the holy book of Muslims?</h3>
+
+            <p class="hausa">
+                Menene littafin tsarki na Musulmi?
+            </p>
+
+            <label class="option">
+                <input type="radio" name="q9" value="a">
+                A. Qur'an
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q9" value="b">
+                B. Tawrah
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q9" value="c">
+                C. Zabur
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q9" value="d">
+                D. Injil
+            </label>
+
+        </div>
+
+        <!-- Question 10 -->
+        <div class="question">
+
+            <h3>10. What is the meaning of Zakah?</h3>
+
+            <p class="hausa">
+                Menene ma'anar Zakka?
+            </p>
+
+            <label class="option">
+                <input type="radio" name="q10" value="a">
+                A. Prayer / Sallah
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q10" value="b">
+                B. Fasting / Azumi
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q10" value="c">
+                C. Obligatory charity / Zakka
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q10" value="d">
+                D. Pilgrimage / Hajji
+            </label>
+
+        </div>
+
+        <button type="button" onclick="checkAnswers()">
+            Submit Answers / Tura Amsoshi
+        </button>
+
+        <button type="reset" onclick="resetQuiz()" style="background:#555;margin-left:5px;">
+            Try Again / Sake Gwada
+        </button>
+
+    </form>
+
+    <div id="result">
+        <h2>Your Result / Sakamakonka</h2>
+        <h1 id="score"></h1>
+        <p id="message"></p>
+        <div id="answers"></div>
+    </div>
+
+    <a href="index.html" class="back">
+        ← Back to Home / Komawa Gida
+    </a>
+
+</div>
+
+<script>
+function checkAnswers() {
+
+    const correct = {
+        q1: "b",
+        q2: "c",
+        q3: "b",
+        q4: "c",
+        q5: "d",
+        q6: "b",
+        q7: "a",
+        q8: "b",
+        q9: "a",
+        q10: "c"
+    };
+
+    let score = 0;
+    let output = "";
+
+    for (let i = 1; i <= 10; i++) {
+
+        let question = "q" + i;
+
+        let selected = document.querySelector(
+            'input[name="' + question + '"]:checked'
+        );
+
+        if (selected && selected.value === correct[question]) {
+
+            score++;
+
+            output += "<p class='correct'>Question " + i +
+            ": Correct / Daidai ✓</p>";
+
+        } else {
+
+            output += "<p class='wrong'>Question " + i +
+            ": Incorrect / Ba daidai ba ✗" +
+            "<br>Correct answer: " +
+            getCorrectAnswer(question, correct[question]) +
+            "</p>";
+
+        }
+    }
+
+    document.getElementById("result").style.display = "block";
+
+    document.getElementById("score").innerHTML =
+        score + " / 10";
+
+    document.getElementById("message").innerHTML =
+        "You scored " + (score * 10) + "% / " +
+        "Ka samu maki " + (score * 10) + "%";
+
+    document.getElementById("answers").innerHTML = output;
+
+    document.getElementById("result").scrollIntoView({
+        behavior: "smooth"
+    });
+}
+
+function getCorrectAnswer(question, answer) {
+    let option = document.querySelector(
+        'input[name="' + question + '"][value="' + answer + '"]'
+    );
+
+    if (option) {
+        return option.parentElement.textContent.trim();
+    }
+
+    return answer;
+}
+
+function resetQuiz() {
+    document.getElementById("result").style.display = "none";
+
+    document.querySelectorAll(
+        'input[type="radio"]'
+    ).forEach(function(input) {
+        input.checked = false;
+    });
+
+    document.getElementById("score").innerHTML = "";
+    document.getElementById("message").innerHTML = "";
+    document.getElementById("answers").innerHTML = "";
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+}
+</script>
+}
+
+</0>
+
+</body>
+</html>

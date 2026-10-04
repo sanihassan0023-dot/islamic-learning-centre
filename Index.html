@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Islamic Learning Centre - Learn Qur'an, Hadith, Fiqhu, Tajweed, Du'a and Islamic knowledge in a simple way.">
+<meta name="keywords" content="Quran, Hadith, Fiqhu, Tajweed, Dua, Islamic Learning, Hausa, Prayer Times, Calendar">
+<meta name="theme-color" content="#075e35">
+<title>Islamic Learning Centre</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:Arial,sans-serif;background:#f4f8f5;color:#222;line-height:1.7;transition:.3s}
+body.dark{background:#101714;color:#eee}
+
+header{background:linear-gradient(135deg,#043d24,#075e35,#0b7544);color:white;text-align:center;padding:42px 15px}
+.logo{font-size:52px;margin-bottom:5px}
+header h1{font-size:32px;margin-bottom:5px}
+header p{font-size:16px;opacity:.95}
+
+nav{background:#043d24;display:flex;justify-content:center;align-items:center;flex-wrap:wrap;padding:10px;position:sticky;top:0;z-index:1000;box-shadow:0 3px 12px rgba(0,0,0,.18)}
+nav a{color:white;text-decoration:none;padding:8px 10px;margin:2px;font-size:14px;font-weight:bold;border-radius:6px;transition:.2s}
+nav a:hover{background:#0a7041}
+.nav-button{border:0;background:#0a7041;color:white;padding:8px 11px;border-radius:6px;cursor:pointer;margin:2px;font-size:14px}
+
+.hero{background:white;text-align:center;padding:70px 20px;transition:.3s}
+body.dark .hero{background:#18211c}
+.hero-arabic{direction:rtl;color:#075e35;font-size:34px;margin-bottom:20px;font-family:"Traditional Arabic","Amiri",serif}
+body.dark .hero-arabic{color:#65d994}
+.hero h2{color:#075e35;font-size:31px;margin-bottom:15px}
+body.dark .hero h2{color:#65d994}
+.hero p{max-width:760px;margin:auto;color:#555;font-size:17px}
+body.dark .hero p{color:#c8d2cb}
+.hero-buttons{margin-top:27px}
+.button{display:inline-block;background:#075e35;color:white;text-decoration:none;padding:13px 24px;border-radius:8px;margin:5px;font-weight:bold;transition:.2s}
+.button:hover{transform:translateY(-2px);opacity:.9}
+.button.secondary{background:#e5f2e9;color:#075e35}
+body.dark .button.secondary{background:#263a2d;color:#7ce2a1}
+
+.search-section{background:#e8f3ec;padding:25px 15px;text-align:center}
+body.dark .search-section{background:#18241d}
+.search-box{max-width:650px;margin:auto;display:flex;gap:8px}
+.search-box input{flex:1;min-width:0;padding:13px;border:1px solid #cbdacf;border-radius:8px;font-size:15px;outline:none}
+.search-box button{padding:13px 18px;border:0;border-radius:8px;background:#075e35;color:white;cursor:pointer}
+#searchResults{max-width:800px;margin:15px auto 0;text-align:left}
+.search-result{display:block;background:white;color:#075e35;text-decoration:none;padding:12px 15px;margin:6px 0;border-radius:8px;border:1px solid #dce8df;font-weight:bold}
+body.dark .search-result{background:#1b2920;color:#75dfa0;border-color:#304036}
+
+.section{max-width:1100px;margin:auto;padding:55px 15px}
+.section h2{text-align:center;color:#075e35;font-size:28px;margin-bottom:10px}
+body.dark .section h2{color:#65d994}
+.section-intro{max-width:720px;margin:0 auto 30px;text-align:center;color:#666}
+body.dark .section-intro{color:#bdc9c1}
+
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:20px}
+.card{background:white;padding:27px 20px;border-radius:15px;text-align:center;box-shadow:0 4px 15px rgba(0,0,0,.07);transition:.25s;border:1px solid #e3ebe5}
+body.dark .card{background:#18211c;border-color:#29372e}
+.card:hover{transform:translateY(-5px);box-shadow:0 8px 25px rgba(0,0,0,.12)}
+.card-icon{font-size:43px;margin-bottom:10px}
+.card h3{color:#075e35;font-size:21px;margin-bottom:9px}
+body.dark .card h3{color:#6be09a}
+.card p{color:#555;font-size:15px}
+body.dark .card p{color:#c2cdc6}
+.card a{display:inline-block;margin-top:15px;color:#075e35;text-decoration:none;font-weight:bold}
+body.dark .card a{color:#72dfa0}
+
+.stats{background:#075e35;color:white;padding:38px 15px}
+.stats-container{max-width:1050px;margin:auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:25px;text-align:center}
+.stat{padding:10px}
+.stat-icon{font-size:25px}
+.stat h3{font-size:32px;margin:3px 0}
+.stat p{font-size:14px;opacity:.95}
+
+.featured{background:white}
+body.dark .featured{background:#121a15}
+.featured-box{max-width:820px;margin:auto;background:#f1f8f3;padding:32px;border-radius:15px;text-align:center;border-left:5px solid #075e35}
+body.dark .featured-box{background:#1a2920}
+.featured-box small{color:#666}
+body.dark .featured-box small{color:#b8c4bc}
+.featured-box .arabic{direction:rtl;color:#075e35;font-size:34px;margin:18px 0;font-family:"Traditional Arabic","Amiri",serif}
+body.dark .featured-box .arabic{color:#6be09a}
+.featured-box .translation{font-size:16px}
+
+.quick{background:#e8f3ec}
+body.dark .quick{background:#17231c}
+.quick-grid{max-width:1000px;margin:auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:15px}
+.quick-item{background:white;padding:20px;border-radius:12px;text-align:center;text-decoration:none;color:#075e35;font-weight:bold;border:1px solid #dce8df;transition:.2s}
+body.dark .quick-item{background:#1b2920;border-color:#304036;color:#73dfa0}
+.quick-item:hover{transform:translateY(-3px)}
+
+.about{text-align:center;padding:55px 20px;background:white}
+body.dark .about{background:#121a15}
+.about h2{color:#075e35;margin-bottom:15px}
+body.dark .about h2{color:#65d994}
+.about p{max-width:780px;margin:auto;color:#555}
+body.dark .about p{color:#c1ccc4}
+
+.support{background:linear-gradient(135deg,#075e35,#0a7544);color:white;text-align:center;padding:55px 20px}
+.support h2{font-size:28px;margin-bottom:12px}
+.support p{max-width:700px;margin:auto;opacity:.95}
+
+footer{background:#043d24;color:white;text-align:center;padding:38px 15px}
+.footer-logo{font-size:30px;margin-bottom:7px}
+.footer-links{margin:20px 0}
+.footer-links a{color:white;text-decoration:none;display:inline-block;margin:5px 8px;font-size:14px}
+.footer-links a:hover{text-decoration:underline}
+.copyright{font-size:13px;opacity:.8;margin-top:15px}
+
+#topBtn{display:none;position:fixed;bottom:20px;right:20px;width:45px;height:45px;border:0;border-radius:50%;background:#075e35;color:white;font-size:20px;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,.25);z-index:999}
+
+@media(max-width:700px){
+ header{padding:35px 12px}
+ header h1{font-size:25px}
+ .logo{font-size:43px}
+ nav{justify-content:flex-start;overflow-x:auto;flex-wrap:nowrap}
+ nav a,.nav-button{white-space:nowrap;font-size:13px}
+ .hero{padding:48px 15px}
+ .hero-arabic{font-size:27px}
+ .hero h2{font-size:24px}
+ .hero p{font-size:15px}
+ .search-box{flex-direction:column}
+ .search-box button{width:100%}
+ .featured-box{padding:23px 15px}
+ .featured-box .arabic{font-size:28px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+ <div class="logo">🕌</div>
+ <h1>Islamic Learning Centre</h1>
+ <p>Learn • Understand • Practice</p>
+</header>
+
+<nav>
+ <a href="index.html">Home</a>
+ <a href="quran.html">Qur'an</a>
+ <a href="hadith.html">Hadith</a>
+ <a href="fiqhu.html">Fiqhu</a>
+ <a href="tajweed.html">Tajweed</a>
+ <a href="dua.html">Du'a</a>
+ <a href="alarm-calendar.html">Prayer Times & Calendar</a>
+ <a href="quiz.html">Quiz</a>
+ <a href="about.html">About</a>
+ <a href="support.html">Support</a>
+ <a href="contact.html">Contact</a>
+ <button class="nav-button" id="darkButton" onclick="toggleDark()" title="Toggle dark mode">🌙 Dark</button>
+</nav>
+
+<section class="hero">
+ <div class="hero-arabic">وَقُلْ رَبِّ زِدْنِي عِلْمًا</div>
+ <h2>Welcome to Islamic Learning Centre</h2>
+ <p>A simple and accessible platform for learning Qur'an, Hadith, Fiqhu, Tajweed, Du'a and Islamic knowledge.</p>
+ <div class="hero-buttons">
+  <a class="button" href="quran.html">📖 Start Learning</a>
+  <a class="button secondary" href="hadith.html">📚 Study Hadith</a>
+ </div>
+</section>
+
+<section class="search-section">
+ <div class="search-box">
+  <input type="search" id="siteSearch" placeholder="Search Qur'an, Hadith, Prayer Times, Tajweed..." oninput="searchSite()" aria-label="Search website">
+  <button onclick="searchSite()">🔍 Search</button>
+ </div>
+ <div id="searchResults" aria-live="polite"></div>
+</section>
+
+<section class="stats">
+ <div class="stats-container">
+  <div class="stat"><div class="stat-icon">📖</div><h3>114</h3><p>Qur'an Surahs</p></div>
+  <div class="stat"><div class="stat-icon">📚</div><h3>42</h3><p>Hadith Lessons</p></div>
+  <div class="stat"><div class="stat-icon">⚖️</div><h3>20</h3><p>Fiqhu Lessons</p></div>
+  <div class="stat"><div class="stat-icon">🤲</div><h3>40+</h3><p>Du'a & Adhkar</p></div>
+ </div>
+</section>
+
+<section class="section">
+ <h2>Our Learning Sections</h2>
+ <p class="section-intro">Explore Islamic learning resources and study at your own pace.</p>
+
+ <div class="cards">
+  <div class="card">
+   <div class="card-icon">📖</div><h3>Qur'an</h3>
+   <p>Read the Holy Qur'an with Arabic text and Hausa translation.</p>
+   <a href="quran.html">Open Qur'an →</a>
+  </div>
+
+  <div class="card">
+   <div class="card-icon">📚</div><h3>Arba'una Hadith</h3>
+   <p>Study 42 Hadith with Arabic, Hausa translation, explanations and lessons.</p>
+   <a href="hadith.html">Learn Hadith →</a>
+  </div>
+
+  <div class="card">
+   <div class="card-icon">⚖️</div><h3>Fiqhu</h3>
+   <p>Learn Islamic rulings about Tsarki, Alwala, Sallah, Azumi and other topics.</p>
+   <a href="fiqhu.html">Learn Fiqhu →</a>
+  </div>
+
+  <div class="card">
+   <div class="card-icon">🎙️</div><h3>Tajweed</h3>
+   <p>Learn the rules of Qur'an recitation with examples and explanations.</p>
+   <a href="tajweed.html">Learn Tajweed →</a>
+  </div>
+
+  <div class="card">
+   <div class="card-icon">🤲</div><h3>Du'a & Adhkar</h3>
+   <p>Learn daily Du'a, morning and evening Adhkar and Rabbana supplications.</p>
+   <a href="dua.html">Learn Du'a →</a>
+  </div>
+
+  <div class="card">
+   <div class="card-icon">🕌</div><h3>Prayer Times & Calendar</h3>
+   <p>View daily prayer times, set reminders and use the Islamic learning calendar.</p>
+   <a href="alarm-calendar.html">Open Prayer Times →</a>
+  </div>
+
+  <div class="card">
+   <div class="card-icon">📝</div><h3>Islamic Quiz</h3>
+   <p>Test your Islamic knowledge with interactive questions.</p>
+   <a href="quiz.html">Take Quiz →</a>
+  </div>
+ </div>
+</section>
+
+<section class="section quick">
+ <h2>Quick Access</h2>
+ <p class="section-intro">Quickly open the lesson or resource you want to study.</p>
+ <div class="quick-grid">
+  <a class="quick-item" href="quran.html">📖 Read Qur'an</a>
+  <a class="quick-item" href="hadith.html">📚 Hadith 1–42</a>
+  <a class="quick-item" href="fiqhu.html">⚖️ Fiqhu Lessons</a>
+  <a class="quick-item" href="tajweed.html">🎙️ Tajweed Lessons</a>
+  <a class="quick-item" href="dua.html">🤲 Du'a & Adhkar</a>
+  <a class="quick-item" href="alarm-calendar.html">🕌 Prayer Times & Calendar</a>
+  <a class="quick-item" href="quiz.html">📝 Islamic Quiz</a>
+ </div>
+</section>
+
+<section class="section featured">
+ <h2>📖 Featured Qur'an Verse</h2>
+ <div class="featured-box">
+  <small>Suratul Ash-Sharh — 94:5</small>
+  <div class="arabic">فَإِنَّ مَعَ الْعُسْرِ يُسْرًا</div>
+  <p class="translation">Lalle ne tare da tsanani akwai sauƙi.</p>
+ </div>
+</section>
+
+<section class="about">
+ <h2>About Islamic Learning Centre</h2>
+ <p>
+  Islamic Learning Centre is designed to make Islamic learning simple, accessible and useful.
+  The website provides resources for Qur'an, Hadith, Fiqhu, Tajweed, Du'a and Islamic knowledge.
+  Our aim is to make learning easier for students, beginners and anyone who wants to increase their knowledge.
+ </p>
+ <div class="hero-buttons">
+  <a class="button" href="about.html">Learn More</a>
+ </div>
+</section>
+
+<section class="support">
+ <h2>Support Islamic Learning</h2>
+ <p>Help us continue developing useful Islamic learning resources and educational materials.</p>
+ <div class="hero-buttons">
+  <a class="button secondary" href="support.html">❤️ Support Us</a>
+  <a class="button secondary" href="contact.html">✉️ Contact Us</a>
+ </div>
+</section>
+
+<footer>
+ <div class="footer-logo">🕌</div>
+ <h3>Islamic Learning Centre</h3>
+ <p>Learn • Understand • Practice</p>
+ <div class="footer-links">
+  <a href="index.html">Home</a>
+  <a href="quran.html">Qur'an</a>
+  <a href="hadith.html">Hadith</a>
+  <a href="fiqhu.html">Fiqhu</a>
+  <a href="tajweed.html">Tajweed</a>
+  <a href="dua.html">Du'a</a>
+  <a href="alarm-calendar.html">Prayer Times & Calendar</a>
+  <a href="quiz.html">Quiz</a>
+  <a href="about.html">About</a>
+  <a href="support.html">Support</a>
+  <a href="contact.html">Contact</a>
+  <a href="privacy.html">Privacy Policy</a>
+ </div>
+ <p class="copyright">© <span id="year"></span> Islamic Learning Centre</p>
+</footer>
+
+<button id="topBtn" onclick="topFunction()" title="Back to top" aria-label="Back to top">↑</button>
+
+<script>
+/* DARK MODE */
+function toggleDark(){
+ document.body.classList.toggle("dark");
+ const enabled=document.body.classList.contains("dark");
+ try{
+  localStorage.setItem("darkMode",enabled ? "true" : "false");
+ }catch(error){}
+ updateDarkButton();
+}
+
+function updateDarkButton(){
+ const button=document.getElementById("darkButton");
+ if(!button)return;
+ button.textContent=document.body.classList.contains("dark") ? "☀️ Light" : "🌙 Dark";
+}
+
+try{
+ if(localStorage.getItem("darkMode")==="true"){
+  document.body.classList.add("dark");
+ }
+}catch(error){}
+updateDarkButton();
+
+/* WEBSITE SEARCH */
+const pages=[
+ {name:"Qur'an",text:"Quran Holy Qur'an Arabic Hausa translation surah juz",url:"quran.html"},
+ {name:"Arba'una Hadith",text:"Hadith 42 Arabic Hausa translation explanation",url:"hadith.html"},
+ {name:"Fiqhu",text:"Tsarki Alwala Sallah Azumi Zakka Hajji Islamic rulings",url:"fiqhu.html"},
+ {name:"Tajweed",text:"Qur'an recitation Tajweed rules examples makharij huruf",url:"tajweed.html"},
+ {name:"Du'a & Adhkar",text:"Rabbana morning evening adhkar dua supplications",url:"dua.html"},
+ {name:"Prayer Times & Calendar",text:"Prayer times Salah Fajr Sunrise Dhuhr Asr Maghrib Isha alarm calendar reminder",url:"alarm-calendar.html"},
+ {name:"Islamic Quiz",text:"Islamic knowledge quiz questions",url:"quiz.html"},
+ {name:"About",text:"About Islamic Learning Centre",url:"about.html"},
+ {name:"Support Us",text:"Support Islamic Learning Centre",url:"support.html"},
+ {name:"Contact",text:"Contact Islamic Learning Centre",url:"contact.html"},
+ {name:"Privacy Policy",text:"Privacy policy website",url:"privacy.html"}
+];
+
+function searchSite(){
+ const input=document.getElementById("siteSearch").value.toLowerCase().trim();
+ const results=document.getElementById("searchResults");
+
+ if(input===""){
+  results.innerHTML="";
+  return;
+ }
+
+ const found=pages.filter(page=>
+  page.name.toLowerCase().includes(input) ||
+  page.text.toLowerCase().includes(input)
+ );
+
+ if(found.length===0){
+  results.innerHTML='<div class="search-result">No result found. Try another word.</div>';
+  return;
+ }
+
+ results.innerHTML=found.map(page=>
+  `<a class="search-result" href="${page.url}">📚 ${page.name} →</a>`
+ ).join("");
+}
+
+/* BACK TO TOP */
+const topBtn=document.getElementById("topBtn");
+
+window.addEventListener("scroll",function(){
+ topBtn.style.display=(window.scrollY>300) ? "block" : "none";
+});
+
+function topFunction(){
+ window.scrollTo({top:0,behavior:"smooth"});
+}
+
+/* CURRENT YEAR */
+document.getElementById("year").textContent=new Date().getFullYear();
+</script>
+
+</body>
+</html>
